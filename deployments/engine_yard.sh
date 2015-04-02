@@ -8,6 +8,9 @@ EY_ENVIRONMENT=""
 EY_API_TOKEN=""
 EY_APP_URL=""
 
+# Fail the deployment on the first error
+set -e
+
 gem install engineyard --no-ri --no-rdoc
 
 ey deploy \
