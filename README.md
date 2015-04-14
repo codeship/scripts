@@ -3,3 +3,7 @@
 A public collection of useful scripts for use on [Codeship](https://codeship.com/) and similar tools.
 
 E.g. scripts to install specific versions of software not included by default on the build VMs. Deployment scripts for external services to customize to your needs, configure caching or trigger notifications. And other scripts if you want to have them included ;)
+
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
