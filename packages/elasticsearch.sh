@@ -1,12 +1,17 @@
 #!/bin/sh
 # Install a custom ElasticSearch version - https://www.elastic.co/products/elasticsearch
 #
-# You can either add this here, or configure them on the environment tab of your
-# project settings.
-ELASTICSEARCH_VERSION="1.5.1"
-ELASTICSEARCH_PORT="9333"
-ELASTICSEARCH_DIR="${HOME}/el"
-ELASTICSEARCH_WAIT_TIME="30"
+# Add at least the following environment variables to your project configuration
+# (otherwise) the defaults below will be used
+# * ELASTICSEARCH_VERSION
+# * ELASTICSEARCH_PORT
+#
+# Include in your builds via
+# https://raw.githubusercontent.com/codeship/scripts/master/packages/elasticsearch.sh | bash -s
+ELASTICSEARCH_VERSION=${ELASTICSEARCH_VERSION:="1.5.1"}
+ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
+ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
+ELASTICSEARCH_WAIT_TIME=${ELASTICSEARCH_WAIT_TIME:="30"}
 
 set -e
 CACHED_DOWNLOAD="${HOME}/cache/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
