@@ -1,15 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 # Deploy to via pushing to a remote git repository.
 #
-# You can either add those here, or configure them on the environment tab of your
-# project settings. Please make sure the remote is configured in a way you can
-# push to, most likely you want to use a SSH based URL.
-REMOTE="git@github.com:USER/REPOSITORY.git"
-BRANCH="gh-pages"
+# Add the following environment variables to your project configuration and add
+# the public SSH key from your projects General settings page to
+# https://dashboard.aptible.com/settings/ssh
+# * REMOTE_REPOSITORY
+# * REMOTE_BRANCH
+#
+# Include in your builds via
+# https://raw.githubusercontent.com/codeship/scripts/master/deployments/git-push.sh | bash -s
+${REMOTE_REPOSITORY:?'You need to configure the REMOTE_REPOSITORY environment variable!'}
+${REMOTE_BRANCH:?'You need to configure the REMOTE_BRANCH environment variable!'}
 
-# fetch the missing history
+set -e
+
 git fetch --unshallow || true
-
-# push to the remote repository
-git remote add codeship_push "${REMOTE}"
-git push codeship_push "${COMMIT_ID}:refs/heads/${BRANCH}"
+git push ${REMOTE_REPOSITORY} ${CI_COMMIT_ID}:${REMOTE_BRANCH}
