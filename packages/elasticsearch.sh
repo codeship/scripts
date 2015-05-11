@@ -8,7 +8,7 @@
 #
 # Include in your builds via
 # https://raw.githubusercontent.com/codeship/scripts/master/packages/elasticsearch.sh | bash -s
-ELASTICSEARCH_VERSION=${ELASTICSEARCH_VERSION:="1.5.1"}
+ELASTICSEARCH_VERSION=${ELASTICSEARCH_VERSION:="1.5.2"}
 ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
 ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
 ELASTICSEARCH_WAIT_TIME=${ELASTICSEARCH_WAIT_TIME:="30"}
