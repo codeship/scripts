@@ -2,7 +2,7 @@
 # Install a custom ElasticSearch version - https://www.elastic.co/products/elasticsearch
 #
 # Add at least the following environment variables to your project configuration
-# (otherwise) the defaults below will be used
+# (otherwise the defaults below will be used).
 # * ELASTICSEARCH_VERSION
 # * ELASTICSEARCH_PORT
 #
