@@ -14,7 +14,7 @@
 # from the script before attempting to deploy.
 
 # Include in your builds via
-# https://raw.githubusercontent.com/codeship/scripts/master/deployments/shopify.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/shopify.sh | bash -s
 SHOPIFY_API_KEY=${SHOPIFY_API_KEY:?'You need to configure the SHOPIFY_API_KEY environment variable!'}
 SHOPIFY_API_PASSWORD=${SHOPIFY_API_PASSWORD:?'You need to configure the SHOPIFY_API_PASSWORD environment variable!'}
 SHOPIFY_STORE_URL=${SHOPIFY_STORE_URL:?'You need to configure the SHOPIFY_STORE_URL environment variable!'}

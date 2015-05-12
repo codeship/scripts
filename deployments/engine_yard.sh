@@ -7,7 +7,7 @@
 # * EY_APP_URL, (optional, will be checked for a HTTP/2xx status code if provided
 #
 # Include in your builds via
-# https://raw.githubusercontent.com/codeship/scripts/master/deployments/engine_yard.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/engine_yard.sh | bash -s
 EY_API_TOKEN=${EY_API_TOKEN:?'You need to configure the EY_API_TOKEN environment variable!'}
 
 set -e

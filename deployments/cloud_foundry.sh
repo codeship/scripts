@@ -10,7 +10,7 @@
 # * CF_APPLICATION
 #
 # Include in your builds via
-# https://raw.githubusercontent.com/codeship/scripts/master/deployments/cloud_foundry.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/cloud_foundry.sh | bash -s
 CF_API=${CF_API:?'You need to configure the CF_API environment variable!'}
 CF_USER=${CF_USER:?'You need to configure the CF_USER environment variable!'}
 CF_PASSWORD=${CF_PASSWORD:?'You need to configure the CF_PASSWORD environment variable!'}

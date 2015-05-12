@@ -6,7 +6,7 @@
 # * PHANTOMJS_VERSION
 #
 # Include in your builds via
-# https://raw.githubusercontent.com/codeship/scripts/master/packages/phantomjs.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/phantomjs.sh | bash -s
 PHANTOMJS_VERSION=${PHANTOMJS_VERSION:="1.9.8"}
 
 set -e

@@ -7,7 +7,7 @@
 # * SAUCE_API_KEY
 #
 # Include in your builds via
-# https://raw.githubusercontent.com/codeship/scripts/master/packages/sauce_connect.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/sauce_connect.sh | bash -s
 SAUCE_VERSION=${SAUCE_VERSION:="4.3.8"}
 SAUCE_DIR=${SAUCE_DIR:="$HOME/sc"}
 
