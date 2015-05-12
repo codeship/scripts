@@ -16,4 +16,4 @@ CACHED_DOWNLOAD="${HOME}/cache/phantomjs-${PHANTOMJS_VERSION}-linux-x86_64.tar.b
 rm -rf ~/.phantomjs
 mkdir ~/.phantomjs
 wget --continue --output-document "${CACHED_DOWNLOAD}" "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOMJS_VERSION}-linux-x86_64.tar.bz2"
-tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "~/.phantomjs"
+tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${HOME}/.phantomjs"
