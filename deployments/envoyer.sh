@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 # Deploy via envoyer.io
 #
-# You can either add this here, or configure them on the environment tab of your
-# project settings. See the _Deployment Hooks_ tab on Envoyer for the ID.
-ENVOYER_ID=""
-
+# Add the following environment variables to your project configuration.
+# * ENVOYER_ID
+#
+# Include in your builds via
+# https://raw.githubusercontent.com/codeship/scripts/master/deployments/envoyer.sh | bash -s
+ENVOYER_ID=${ENVOYER_ID:?'You need to configure the ENVOYER_ID environment variable!'}
 curl "https://envoyer.io/deploy/${ENVOYER_ID}"
