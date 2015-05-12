@@ -9,8 +9,8 @@
 #
 # Include in your builds via
 # https://raw.githubusercontent.com/codeship/scripts/master/deployments/git-push.sh | bash -s
-${REMOTE_REPOSITORY:?'You need to configure the REMOTE_REPOSITORY environment variable!'}
-${REMOTE_BRANCH:?'You need to configure the REMOTE_BRANCH environment variable!'}
+REMOTE_REPOSITORY=${REMOTE_REPOSITORY:?'You need to configure the REMOTE_REPOSITORY environment variable!'}
+REMOTE_BRANCH=${REMOTE_BRANCH:?'You need to configure the REMOTE_BRANCH environment variable!'}
 
 set -e
 
