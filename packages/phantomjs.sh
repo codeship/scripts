@@ -1,17 +1,19 @@
-#!/bin/sh
+#!/bin/bash
 # Install a custom version of PhantomJS, http://phantomjs.org/
 #
-# You can either add this here, or configure them on the environment tab of your
-# project settings.
-PHANTOMJS_VERSION="1.9.8"
+# Add at least the following environment variables to your project configuration
+# (otherwise the defaults below will be used).
+# * PHANTOMJS_VERSION
+#
+# Include in your builds via
+# https://raw.githubusercontent.com/codeship/scripts/master/packages/phantomjs.sh | bash -s
+PHANTOMJS_VERSION=${PHANTOMJS_VERSION:="1.9.8"}
+
+set -e
+CACHED_DOWNLOAD="${HOME}/cache/phantomjs-${PHANTOMJS_VERSION}-linux-x86_64.tar.bz2"
 
 # clean old version and setup directories
 rm -rf ~/.phantomjs
 mkdir ~/.phantomjs
-
-# download and extract new version
-wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOMJS_VERSION}-linux-x86_64.tar.bz2 -O ~/phantomjs.tar.bz2
-tar -xaf ~/phantomjs.tar.bz2 --strip-components=1 -C ~/.phantomjs
-
-# cleanup
-rm -f ~/phantomjs.tar.bz2
+wget --continue --output-document "${CACHED_DOWNLOAD}" "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOMJS_VERSION}-linux-x86_64.tar.bz2"
+tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "~/.phantomjs"
