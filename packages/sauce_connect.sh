@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Install an run the Sauce Connect server, https://saucelabs.com/
 #
 # Add at least the following environment variables to your project configuration
@@ -12,8 +12,8 @@ SAUCE_VERSION=${SAUCE_VERSION:="4.3.8"}
 SAUCE_DIR=${SAUCE_DIR:="$HOME/sc"}
 
 # check required parameters
-${SAUCE_USER:?'You need to configure the SAUCE_USER environment variable!'}
-${SAUCE_API_KEY:?'You need to configure the SAUCE_API_KEY environment variable!'}
+SAUCE_USER=${SAUCE_USER:?'You need to configure the SAUCE_USER environment variable!'}
+SAUCE_API_KEY=${SAUCE_API_KEY:?'You need to configure the SAUCE_API_KEY environment variable!'}
 
 # exit on the first failure
 set -e
