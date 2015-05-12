@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Install a custom ElasticSearch version - https://www.elastic.co/products/elasticsearch
 #
 # Add at least the following environment variables to your project configuration
