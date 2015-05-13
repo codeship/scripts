@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Install a custom ElasticSearch version - https://www.elastic.co/products/elasticsearch
 #
 # Add at least the following environment variables to your project configuration
@@ -7,7 +7,7 @@
 # * ELASTICSEARCH_PORT
 #
 # Include in your builds via
-# https://raw.githubusercontent.com/codeship/scripts/master/packages/elasticsearch.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/elasticsearch.sh | bash -s
 ELASTICSEARCH_VERSION=${ELASTICSEARCH_VERSION:="1.5.2"}
 ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
 ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}

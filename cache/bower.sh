@@ -2,7 +2,7 @@
 # Cache Bower dependencies
 #
 # Use this like
-# curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/cache/bower.sh | bash 
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/cache/bower.sh | bash 
 cat <<EOF > "${HOME}/.bowerrc"
 {
   "storage": {

@@ -3,7 +3,7 @@
 # manual installation taken from http://www.scala-sbt.org/0.13/tutorial/Manual-Installation.html
 #
 # Include in your builds via
-# https://raw.githubusercontent.com/codeship/scripts/master/packages/sbt.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/sbt.sh | bash -s
 SBT_VERSION=${SBT_VERSION:="0.13.8"}
 
 set -e
