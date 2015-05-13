@@ -1,5 +1,5 @@
 #!/bin/bash
-# Deploy to a Meteor, https://www.meteor.com
+# Deploy to a Meteor application, https://www.meteor.com
 #
 # This script expects meteor to be already installed and available in your path.
 # Add the following environment variables to your project configuration
