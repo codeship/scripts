@@ -9,12 +9,9 @@
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/go.sh | bash -s
 GO_VERSION=${GO_VERSION:="1.4.2"}
 
-
 # check required parameters
-GOROOT=${GOROOT:?'You need to configure the GOROOT environment variable! Please set it to "/tmp/go"'}
-if [ ! $(echo $PATH | grep "$GOROOT/bin") ]; then
-	>&2 echo "Please add '$GOOROT/bin' to the beginning of the PATH."
-fi
+export GOROOT="/tmp/go"
+export PATH="${GOROOT}/bin:${PATH}"
 
 set -e
 CACHED_DOWNLOAD="${HOME}/cache/go${GO_VERSION}.linux-amd64.tar.gz"
