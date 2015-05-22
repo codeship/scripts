@@ -4,10 +4,8 @@
 # This script expects meteor to be already installed and available in your path.
 # Add the following environment variables to your project configuration
 # * METEOR_SESSION
-# * METEOR_USERNAME
 # * METEOR_USER_ID
 # * METEOR_TOKEN
-# * METEOR_TOKEN_ID
 # * METEOR_APP_URL
 #
 # Include in your builds via
