@@ -6,7 +6,7 @@
 # * GO_VERSION
 #
 # Include in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/go.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/languages/go/languages/go.sh > ${HOME}/go.sh && source ${HOME}/go.sh
 GO_VERSION=${GO_VERSION:="1.4.2"}
 
 # check required parameters
