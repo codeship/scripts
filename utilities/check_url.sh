@@ -11,6 +11,20 @@ WGET_OPTIONS="--no-check-certificate --output-document=/dev/null"
 TRIES=6
 SLEEP=10
 
+while getopts "t:w:o" opt; do
+  case $opt in
+    t)
+      TRIES=${OPTARG}
+      ;;
+    w)
+      SLEEP=${OPTARG}
+      ;;
+    o)
+      WGET_OPTIONS=${OPTARG}
+      ;;
+  esac
+done
+
 function retry {
   local count=${1} && shift
   local cmd=${@}
