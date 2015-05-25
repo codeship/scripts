@@ -6,7 +6,6 @@
 #
 # then use the script in your tests like
 # check_url "url_to_check"
-URL=${@}
 WGET_OPTIONS="--no-check-certificate --output-document=/dev/null"
 TRIES=6
 SLEEP=10
@@ -24,6 +23,9 @@ while getopts "t:w:o" opt; do
       ;;
   esac
 done
+
+# set the URL
+URL=${@}
 
 function retry {
   local count=${1} && shift
