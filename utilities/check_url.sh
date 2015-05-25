@@ -5,21 +5,21 @@
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilties/check_url.sh > ${HOME}/bin/check_url && chmod u+x ${HOME}/bin/check_url
 #
 # then use the script in your tests like
-# check_url "url_to_check"
-WGET_OPTIONS="--no-check-certificate --output-document=/dev/null"
+# check_url -t 6 -w 10 -o "--no-check-certificate --output-document=/dev/null" "url_to_check"
+OPTIONS="--no-check-certificate --output-document=/dev/null"
 TRIES=6
-SLEEP=10
+WAIT=10
 
 while getopts "t:w:o" opt; do
   case $opt in
+    o)
+      OPTIONS=${OPTARG}
+      ;;
     t)
       TRIES=${OPTARG}
       ;;
     w)
-      SLEEP=${OPTARG}
-      ;;
-    o)
-      WGET_OPTIONS=${OPTARG}
+      WAIT=${OPTARG}
       ;;
   esac
 done
@@ -36,9 +36,9 @@ function retry {
     ${cmd} && break
     count=$(($count - 1))
     if [ ! $count -eq 0 ]; then
-      echo -e "Waiting ${SLEEP} seconds before trying again."
+      echo -e "Waiting ${WAIT} seconds before trying again."
       echo "------------------------------------------------------------------------------------------------------"
-      sleep "${SLEEP}"
+      sleep "${WAIT}"
     fi
   done
 
@@ -49,4 +49,4 @@ function retry {
   fi
 }
 
-retry "${TRIES}" "wget ${WGET_OPTIONS} ${URL}"
+retry "${TRIES}" "wget ${OPTIONS} ${URL}"
