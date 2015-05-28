@@ -25,7 +25,9 @@ echo "Testing scripts for dependency caches"
 run_all_scripts_in_dir_in_parallel "${DIR}/cache"
 
 echo "Testing scripts for custom packages"
-run_all_scripts_in_dir_in_parallel "${DIR}/packages"
+#run_all_scripts_in_dir_in_parallel "${DIR}/packages"
 
 echo "Testing utility scripts"
-run_all_scripts_in_dir_in_parallel "${DIR}/utilities"
+source utilities/random_timezone.sh
+bash utilities/check_url.sh https://codeship.com
+! bash utilities/check_url.sh https://does_not_exist.codeship.com
