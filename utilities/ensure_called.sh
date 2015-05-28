@@ -2,7 +2,7 @@
 # Ensure a separate script is called in the event of an error
 #
 # Include in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilties/ensure_called.sh > ${HOME}/bin/ensure_called && chmod u+x ${HOME}/bin/ensure_called
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilities/ensure_called.sh > ${HOME}/bin/ensure_called && chmod u+x ${HOME}/bin/ensure_called
 #
 # then use the script in your tests like
 # ensure_called "test command to execute" [command2 ...] "on_exit handler"
