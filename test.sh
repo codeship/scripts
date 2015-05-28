@@ -28,4 +28,5 @@ echo "Testing scripts for custom packages"
 run_all_scripts_in_dir_in_parallel "${DIR}/packages"
 
 echo "Testing utility scripts"
-run_all_scripts_in_dir_in_parallel "${DIR}/utilities"
+source utilties/random_timezone.sh
+bash utilties/check_url.sh https://google.com
