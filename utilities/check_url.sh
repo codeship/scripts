@@ -2,7 +2,7 @@
 # Ensure a separate script is called in the event of an error
 #
 # Include in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilties/check_url.sh > ${HOME}/bin/check_url && chmod u+x ${HOME}/bin/check_url
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilities/check_url.sh > ${HOME}/bin/check_url && chmod u+x ${HOME}/bin/check_url
 #
 # then use the script in your tests like
 # check_url -t 6 -w 10 -o "--no-check-certificate --output-document=/dev/null" "url_to_check"
