@@ -25,7 +25,7 @@ echo "Testing scripts for dependency caches"
 run_all_scripts_in_dir_in_parallel "${DIR}/cache"
 
 echo "Testing scripts for custom packages"
-run_all_scripts_in_dir_in_parallel "${DIR}/packages"
+#run_all_scripts_in_dir_in_parallel "${DIR}/packages"
 
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
