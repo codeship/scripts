@@ -28,25 +28,23 @@ done
 URL=${@}
 
 function retry {
-  local count=${1} && shift
+  local tries=${1} && shift
   local cmd=${@}
+  local status=0
 
-  while [ $count -gt 0 ]; do
-    echo -e "Trying ($((${TRIES} - ${count} + 1)) of ${TRIES}) '${cmd}'"
+  for (( i = 1; i <=${tries}; i++ )); do
+    echo -e "Trying ($i of ${TRIES}) '${cmd}'"
     ${cmd} && break
-    count=$(($count - 1))
-    if [ ! $count -eq 0 ]; then
+    status=$?
+
+    if [ $i -lt ${TRIES} ]; then
       echo -e "Waiting ${WAIT} seconds before trying again."
       echo "------------------------------------------------------------------------------------------------------"
       sleep "${WAIT}"
     fi
   done
 
-  if [ $count -eq 0 ]; then
-    return 1
-  else
-    return 0
-  fi
+  return ${status}
 }
 
 retry "${TRIES}" "wget ${OPTIONS} ${URL}"
