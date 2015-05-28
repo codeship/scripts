@@ -6,7 +6,7 @@
 #
 # then use the script in your tests like
 # check_url -t 6 -w 10 -o "--no-check-certificate --output-document=/dev/null" "url_to_check"
-OPTIONS="--no-check-certificate --output-document=/dev/null"
+OPTIONS="--output-document=/dev/null"
 TRIES=6
 WAIT=10
 
