@@ -22,7 +22,7 @@ NEW_RELIC_DESCRIPTION=${NEW_RELIC_DESCRIPTION:-$CI_MESSAGE}
 NEW_RELIC_REVISION=${NEW_RELIC_REVISION:-$CI_COMMIT_ID}
 NEW_RELIC_CHANGELOG=${NEW_RELIC_CHANGELOG:-}
 
-#sanitize semicolons, remove newlines, and replace double (or more) spaces with a single space
+#sanitize semicolons, remove newlines, and replace multiple spaces with a single space
 NEW_RELIC_APP=$(echo ${NEW_RELIC_APP//;/%3B}|sed ':a;N;$!ba;s/\n/ /g'|tr -s ' ')
 NEW_RELIC_DESCRIPTION=$(echo ${NEW_RELIC_DESCRIPTION//;/%3B}|sed ':a;N;$!ba;s/\n/ /g'|tr -s ' ')
 NEW_RELIC_REVISION=$(echo ${NEW_RELIC_REVISION//;/%3B}|sed ':a;N;$!ba;s/\n/ /g'|tr -s ' ')
