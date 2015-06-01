@@ -34,6 +34,10 @@ source utilities/random_timezone.sh
 bash utilities/check_url.sh https://codeship.com
 ! bash utilities/check_url.sh https://does_not_exist.codeship.com
 
+test check_url certificate warnings
+bash WGET_OPTIONS="--no-check-certificate" utilities/check_url.sh https://cacert.org
+! bash utilities/check_url.sh https://cacert.org
+
 # test ensure_called
 bash utilities/ensure_called.sh "echo Hello World" | grep "Hello World"
 bash utilities/ensure_called.sh true false "echo Hello World" | grep "Hello World"
