@@ -30,7 +30,6 @@ function retry {
   local status=0
 
   if [ "${cmd/--no-check-certificate}" != "${cmd}" ]; then
-    local retry_without_ssl=true
     local original_cmd="${cmd}"
     cmd="${cmd/--no-check-certificate}"
   fi
