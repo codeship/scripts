@@ -36,8 +36,12 @@ function retry {
 
   for (( i = 1; i <=${tries}; i++ )); do
     echo -e "Trying ($i of ${TRIES}) '${cmd}'"
-    ${cmd} && break
+    ${cmd}
     status=$?
+
+    if [ ${status} -eq 0 ]; then
+      break
+    fi
 
     if [ ${status} -eq 5 -a "${original_cmd}" != "" ]; then
       echo -e "\e[0;33mCheck failed because of an error validating the SSL certificate.\e[0m"
