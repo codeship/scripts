@@ -31,8 +31,12 @@ echo "Testing utility scripts"
 source utilities/random_timezone.sh
 
 # test check_url
-bash utilities/check_url.sh https://codeship.com
-! bash utilities/check_url.sh https://does_not_exist.codeship.com
+bash utilities/check_url.sh -w 2 -t 2 https://codeship.com
+! bash utilities/check_url.sh -w 2 -t 2 https://does_not_exist.codeship.com
+
+# test check_url certificate warnings
+WGET_OPTIONS="--no-check-certificate" bash utilities/check_url.sh -w 2 -t 2 https://cacert.org
+! bash utilities/check_url.sh -w 2 -t 2 https://cacert.org
 
 # test ensure_called
 bash utilities/ensure_called.sh "echo Hello World" | grep "Hello World"
