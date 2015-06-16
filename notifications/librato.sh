@@ -22,7 +22,7 @@
 # Check required parameters
 LIBRATO_USERID=${LIBRATO_USERID:?'You need to configure the LIBRATO_USERID environment variable!'}
 LIBRATO_TOKEN=${LIBRATO_TOKEN:?'You need to configure the LIBRATO_TOKEN environment variable!'}
-LIBRATO_STREAM=${LIBRATO_STREAM:-deployment}
+LIBRATO_STREAM=${LIBRATO_STREAM:-'deployment'}
 LIBRATO_START_TIME=$(date +"%s")
 LIBRATO_TITLE=${LIBRATO_TITLE:-$CI_COMMIT_ID}
 LIBRATO_DESCRIPTION=${LIBRATO_DESCRIPTION:-$CI_MESSAGE}
