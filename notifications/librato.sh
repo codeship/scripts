@@ -8,15 +8,16 @@
 # * LIBRATO_TOKEN
 #
 # You have the option to define the environment variables below, else defaults will be applied.
-# (Defaults are: ).
-#
-# * LIBRATO_STREAM
-# * LIBRATO_TITLE
-# * LIBRATO_DESCRIPTION
-# * LIBRATO_SOURCE
-# * LIBRATO_LINK_REL
-# * LIBRATO_LINK_LABEL
-# * LIBRATO_LINK_HREF
+# For more details on Default Environment Variables (those starting with "CI_"), please visit:
+# https://codeship.com/documentation/continuous-integration/set-environment-variables/
+# 
+# * LIBRATO_STREAM ( Default: "deployment" )
+# * LIBRATO_TITLE ( Default: CI_COMMIT_ID )
+# * LIBRATO_DESCRIPTION ( Default: CI_MESSAGE )
+# * LIBRATO_SOURCE ( Default: CI_BRANCH )
+# * LIBRATO_LINK_REL ( Default: CI_NAME )
+# * LIBRATO_LINK_LABEL ( Default: CI_NAME )
+# * LIBRATO_LINK_HREF ( Default: CI_BUILD_URL)
 #
 # Check required parameters
 LIBRATO_USERID=${LIBRATO_USERID:?'You need to configure the LIBRATO_USERID environment variable!'}
