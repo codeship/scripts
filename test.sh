@@ -26,6 +26,9 @@ run_all_scripts_in_dir_in_parallel "${DIR}/cache"
 
 echo "Testing scripts for custom packages"
 #run_all_scripts_in_dir_in_parallel "${DIR}/packages"
+export SELENIUM_PORT=4444
+bash packages/selenium_server.sh
+netstat -lnp | grep "4444.*java"
 
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
