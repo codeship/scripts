@@ -2,6 +2,9 @@
 # Adding deployment annotations to librato graphs
 # http://support.metrics.librato.com/knowledgebase/articles/122410-adding-annotations-to-graphs
 #
+# Note:	There is currenctly a bug in the Librato frontend; you cannot view long descriptions
+#		and links that were submitted with annotations. ETA for a fix is by/in July 2015.
+#
 # You have to set the following environment variables in your project configuration
 #
 # * LIBRATO_USERID
