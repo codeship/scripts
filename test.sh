@@ -28,7 +28,11 @@ echo "Testing scripts for custom packages"
 #run_all_scripts_in_dir_in_parallel "${DIR}/packages"
 export SELENIUM_PORT=4444
 bash packages/selenium_server.sh
-netstat -lnp | grep "4444.*java"
+netstat -lnp | grep "${SELENIUM_PORT}.*java"
+
+export MONGODB_PORT=27018
+bash packages/mongodb.sh
+netstat -lnp | grep "${MONGODB_PORT}.*mongod"
 
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
