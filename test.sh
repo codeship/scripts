@@ -34,6 +34,10 @@ export MONGODB_PORT=27018
 bash packages/mongodb.sh
 netstat -lnp | grep "${MONGODB_PORT}.*mongod"
 
+bash packages/neo4j.sh
+netstat -lnp | grep "7473.*java"
+netstat -lnp | grep "7474.*java"
+
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
 
