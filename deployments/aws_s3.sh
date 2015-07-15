@@ -29,6 +29,7 @@ declare -A AWS_S3_EXTRA_ARGS=()
 
 AWS_S3_EXTRA_ARGS["content-encoding"]=${AWS_S3_CONTENT_ENCODING} # Sets Content-Encoding Header
 AWS_S3_EXTRA_ARGS["cache-control"]=${AWS_S3_CACHE_CONTROL} # Sets Cache-Control Header
+AWS_S3_EXTRA_ARGS["acl"]=${AWS_S3_ACL} # Sets ACL
 
 
 # Base command to be executed
