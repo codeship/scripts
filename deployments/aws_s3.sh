@@ -52,4 +52,4 @@ done
 # aws s3 cp build s3://xyz/ --cache-control="no-cache"
 
 # Is eval unsafe ?
-eval BASE_COMMAND
+eval $BASE_COMMAND
