@@ -43,5 +43,12 @@ do
   fi
 done
 
+
+# Example Result
+# LOCAL_PATH="build"
+# AWS_S3_BUCKET="xyz"
+# AWS_S3_CACHE_CONTROL="no-cache"
+# aws s3 cp build s3://xyz/ --cache-control="no-cache"
+
 # Is eval unsafe ?
 eval BASE_COMMAND
