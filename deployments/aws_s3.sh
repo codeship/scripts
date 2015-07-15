@@ -33,7 +33,7 @@ AWS_S3_EXTRA_ARGS["acl"]=${AWS_S3_ACL} # Sets ACL
 
 
 # Base command to be executed
-BASE_COMMAND="aws s3 cp ${LOCAL_PATH} s3://${AWS_S3_BUCKET}/"
+BASE_COMMAND="aws s3 cp ${LOCAL_PATH} s3://${AWS_S3_BUCKET}/ --recursive"
 
 # Build command with arguments that are provided and not empty
 for key in "${!AWS_S3_EXTRA_ARGS[@]}"
@@ -44,12 +44,11 @@ do
   fi
 done
 
-
 # Example Result
 # LOCAL_PATH="build"
 # AWS_S3_BUCKET="xyz"
 # AWS_S3_CACHE_CONTROL="no-cache"
-# aws s3 cp build s3://xyz/ --cache-control="no-cache"
+# aws s3 cp build s3://xyz/ --recursive --cache-control="no-cache"
 
 # Is eval unsafe ?
 eval $BASE_COMMAND
