@@ -21,4 +21,27 @@ set -e
 # install the AWS CLI, which isn't installed by default
 pip install awscli
 
-aws s3 cp "${LOCAL_PATH}" "s3://${AWS_S3_BUCKET}/"
+# Declare associative array of extra command line arguments for aws
+# Supported only on bash v4
+# Reference: http://docs.aws.amazon.com/cli/latest/reference/s3/cp.html
+# Can be extended to include support for any of the available options in the aws cli
+declare -A AWS_S3_EXTRA_ARGS=()
+
+AWS_S3_EXTRA_ARGS["content-encoding"]=${AWS_S3_CONTENT_ENCODING} # Sets Content-Encoding Header
+AWS_S3_EXTRA_ARGS["cache-control"]=${AWS_S3_CACHE_CONTROL} # Sets Cache-Control Header
+
+
+# Base command to be executed
+BASE_COMMAND="aws s3 cp ${LOCAL_PATH} s3://${AWS_S3_BUCKET}/"
+
+# Build command with arguments that are provided and not empty
+for key in "${!AWS_S3_EXTRA_ARGS[@]}"
+do
+  if [ -n "${AWS_S3_EXTRA_ARGS[$key]}" ]; then # Checks if not empty
+    echo "Detected AWS_S3 Argument: $key=\"${AWS_S3_EXTRA_ARGS[$key]}\""
+    BASE_COMMAND+=" --$key=\"${AWS_S3_EXTRA_ARGS[$key]}\""
+  fi
+done
+
+# Is eval unsafe ?
+eval BASE_COMMAND
