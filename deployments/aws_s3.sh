@@ -33,7 +33,7 @@ AWS_S3_EXTRA_ARGS["acl"]=${AWS_S3_ACL} # Sets ACL
 
 
 # Base command to be executed
-BASE_COMMAND="aws s3 cp ${LOCAL_PATH} s3://${AWS_S3_BUCKET}/ --recursive"
+BASE_COMMAND="aws s3 sync ${LOCAL_PATH} s3://${AWS_S3_BUCKET}/"
 
 # Build command with arguments that are provided and not empty
 for key in "${!AWS_S3_EXTRA_ARGS[@]}"
