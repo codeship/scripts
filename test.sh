@@ -38,6 +38,10 @@ bash packages/neo4j.sh
 netstat -lnp | grep "7473.*java"
 netstat -lnp | grep "7474.*java"
 
+export FIREFOX_VERSION="40.0.2"
+bash packages/firefox.sh
+firefox --version | grep "${FIREFOX_VERSION}"
+
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
 
