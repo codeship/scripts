@@ -42,6 +42,12 @@ export FIREFOX_VERSION="40.0.2"
 bash packages/firefox.sh
 firefox --version | grep "${FIREFOX_VERSION}"
 
+echo "Testing language scripts"
+export GO_VERSION="1.4.2"
+source languages/go.sh
+export GO_VERSION="1.5"
+source languages/go.sh
+
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
 
