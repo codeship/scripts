@@ -45,8 +45,13 @@ firefox --version | grep "${FIREFOX_VERSION}"
 echo "Testing language scripts"
 export GO_VERSION="1.4.2"
 source languages/go.sh
+go version | grep ${GO_VERSION}
 export GO_VERSION="1.5"
 source languages/go.sh
+go version | grep ${GO_VERSION}
+export GO_VERSION="1.4.2"
+source languages/go.sh
+go version | grep ${GO_VERSION}
 
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
