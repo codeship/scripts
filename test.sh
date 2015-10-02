@@ -42,6 +42,14 @@ export FIREFOX_VERSION="40.0.2"
 bash packages/firefox.sh
 firefox --version | grep "${FIREFOX_VERSION}"
 
+phpenv local 5.5
+bash packages/phalcon.sh
+php -m | grep phalcon
+
+phpenv local 5.6
+bash packages/phalcon.sh
+php -m | grep phalcon
+
 echo "Testing language scripts"
 export GO_VERSION="1.4.2"
 source languages/go.sh
