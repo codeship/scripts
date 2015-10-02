@@ -1,13 +1,15 @@
 #!/bin/bash
 # Install a custom ElasticSearch version - https://www.elastic.co/products/elasticsearch
 #
+# To run this script in Codeship, add the following
+# command to your project's test setup command:
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/elasticsearch.sh | bash -s
+#
 # Add at least the following environment variables to your project configuration
 # (otherwise the defaults below will be used).
 # * ELASTICSEARCH_VERSION
 # * ELASTICSEARCH_PORT
 #
-# Include in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/elasticsearch.sh | bash -s
 ELASTICSEARCH_VERSION=${ELASTICSEARCH_VERSION:="1.5.2"}
 ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
 ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
