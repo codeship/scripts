@@ -11,15 +11,15 @@ PHP_VERSION=$(phpenv version | grep -Eoe "([[:digit:]]+\.?)+")
 
 # clone or update the repository
 if [ ! -d "${CACHED_REPOSITORY}" ]; then
-	git clone --depth=1 git://github.com/phalcon/cphalcon.git "${CACHED_REPOSITORY}"
+	git clone --depth=1 git://github.com/phalcon/cphalcon.git "${CACHED_REPOSITORY}" >/dev/null
 else
 	cd "${CACHED_REPOSITORY}"
-	git pull origin master
+	git pull origin master >/dev/null
 fi
 
 # compile and enable the extension
 cd "${CACHED_REPOSITORY}/build"
-./install
+./install >/dev/null
 echo "extension=phalcon.so" >> /home/rof/.phpenv/versions/${PHP_VERSION}/etc/php.ini
 
 cd "${PWD}"
