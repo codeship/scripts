@@ -44,11 +44,17 @@ do
   fi
 done
 
+# Check for delete flag
+if [ -n "${AWS_S3_DELETE_FLAG}" ]; then
+	BASE_COMMAND+=" --delete"
+fi
+
 # Example Result
 # LOCAL_PATH="build"
 # AWS_S3_BUCKET="xyz"
 # AWS_S3_CACHE_CONTROL="no-cache"
-# aws s3 sync build s3://xyz/ --cache-control="no-cache"
+# AWS_DELETE_FLAG="1"
+# aws s3 sync build s3://xyz/ --cache-control="no-cache" --delete
 
 # Is eval unsafe ?
 eval $BASE_COMMAND
