@@ -50,6 +50,10 @@ phpenv local 5.6
 bash packages/phalcon.sh
 php -m | grep phalcon
 
+# JX framework
+bash packages/jx.sh
+jx --version
+
 echo "Testing language scripts"
 export GO_VERSION="1.4.2"
 source languages/go.sh
