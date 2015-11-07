@@ -15,11 +15,19 @@ ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
 ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
 ELASTICSEARCH_WAIT_TIME=${ELASTICSEARCH_WAIT_TIME:="30"}
 
+# The download location of version 2.x seems to follow a different URL structure to 1.x
+if [ ${ELASTICSEARCH_VERSION:0:1} -eq 2 ]
+then
+  ELASTICSEARCH_DL_URL="https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ELASTICSEARCH_VERSION}/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
+else
+  ELASTICSEARCH_DL_URL="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
+fi
 set -e
+
 CACHED_DOWNLOAD="${HOME}/cache/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
 
 mkdir -p "${ELASTICSEARCH_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
+wget --continue --output-document "${CACHED_DOWNLOAD}" "${ELASTICSEARCH_DL_URL}"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${ELASTICSEARCH_DIR}"
 
 echo "http.port: ${ELASTICSEARCH_PORT}" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
