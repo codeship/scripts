@@ -4,6 +4,8 @@ A public collection of useful scripts for use on [Codeship](https://codeship.com
 
 E.g. scripts to install specific versions of software not included by default on the build VMs. Deployment scripts for external services to customize to your needs, configure caching or trigger notifications. And other scripts if you want to have them included ;)
 
+## Using the scripts
+
 Each script includes a comment at the beginning detailing how to configure and use the script in your builds. Those comments look for example like
 
 ```shell
