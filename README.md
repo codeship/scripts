@@ -19,7 +19,7 @@ Each script includes a comment at the beginning detailing how to configure and u
 
 It is important that you follow those instructions and not simply copy / paste the scripts into your Codeship project configuration.
 
-Most scripts include `set -e` to make the script fail as soon as a command returns a non-zero exit code (which indicate failure). This is fine if you call the script as documented above (via the `curl` command). But it will have side effects if you copy the commands into your settings on codeship.com as any failing command (after the `set -x`) will terminate your build with a `SYSTEM` error message. (Reason being, that this command will cause the SSH connection to be terminated once another command fails.) You probably don't want this :)
+Most scripts include `set -e` to make the script fail as soon as a command returns a non-zero exit code (which indicates failure). This is fine if you call the script as documented above (via the `curl` command). But it will have side effects if you copy the commands into your settings on codeship.com as any failing command (after the `set -x`) will terminate your build with a `SYSTEM` error message. (Reason being, that this command will cause the SSH connection to be terminated once another command fails.) You probably don't want this :)
 
 ## Code of Conduct
 
