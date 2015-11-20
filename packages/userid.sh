@@ -1,7 +1,7 @@
 #!/bin/bash
 # Generate user id for Vault authentication
 
-hostname=`hostname`
+hostname=`hostname | tr -d ' '`
 echo $hostname
 
 hash="$hostnameFRSKL-4365768-SALT-7788989-ZRSIJNDE-1245"
