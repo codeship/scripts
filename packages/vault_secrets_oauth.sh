@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Create secrets for OAuth - Vault server
 vault_token=$(cat ~/.vault-token)
 
 # create secrets oauth
