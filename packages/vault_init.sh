@@ -7,8 +7,9 @@ salt="FRSKL-4365768-SALT-7788989-ZRSIJNDE-1245"
 hash=$name$salt
 
 # generate user id
-user_id=`echo -n $hash | shasum | tr -d '-' | tr -d ' '`
-echo $user_id
+#user_id=`echo -n $hash | sha256sum | tr -d '-' | tr -d ' '`
+#echo $user_id
+
 user_id="ca1beab9a9a421359282e5eb3c2a366836199e8f881c6210c570d13bfcf5e0a3"
 echo $user_id
 
