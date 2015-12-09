@@ -50,6 +50,11 @@ phpenv local 5.6
 bash packages/phalcon.sh
 php -m | grep phalcon
 
+# Dart
+export DART_VERSION="1.12.0"
+./dart.sh
+dart --version | grep "1.12.0"
+
 # JX framework
 bash packages/jx.sh
 jx --version
