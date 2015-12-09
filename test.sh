@@ -53,7 +53,7 @@ php -m | grep phalcon
 # Dart
 export DART_VERSION="1.12.0"
 bash packages/dart.sh
-dart --version | grep "1.12.0"
+dart --version 2>&1 | grep "${DART_VERSION}"
 
 # JX framework
 bash packages/jx.sh
