@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install a DynameDB local - https://www.elastic.co/products/elasticsearch
+# Install a DynameDB local - https://aws.amazon.com/documentation/dynamodb/
 #
 # Add at least the following environment variables to your project configuration
 # (otherwise the defaults below will be used).
@@ -20,7 +20,7 @@ mkdir -p "${DYNAMODB_DIR}"
 wget --continue --output-document "${CACHED_DOWNLOAD}" "http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_${DYNAMODB_VERSION}.tar.gz"
 tar -xaf "${CACHED_DOWNLOAD}" --directory "${DYNAMODB_DIR}"
 
-# Make sure to use the exact parameters you want for ElasticSearch and give it enough sleep time to properly start up
+# Make sure to use the exact parameters you want for DynamoDB and give it enough sleep time to properly start up
 cd ${DYNAMODB_DIR}
 nohup bash -c "java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory -port ${DYNAMODB_PORT} 2>&1" &
 sleep "${DYNAMODB_WAIT_TIME}"
