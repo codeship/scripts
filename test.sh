@@ -59,6 +59,11 @@ dart --version 2>&1 | grep "${DART_VERSION}"
 bash packages/jx.sh
 jx --version
 
+# git LFS
+export GIT_LFS_VERSION="1.1.0"
+bash packages/git-lfs.sh
+git lfs env | grep "git-lfs/${GIT_LFS_VERSION}"
+
 echo "Testing language scripts"
 export GO_VERSION="1.4.2"
 source languages/go.sh
