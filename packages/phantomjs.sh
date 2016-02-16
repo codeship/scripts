@@ -5,6 +5,8 @@
 # (otherwise the defaults below will be used).
 # * PHANTOMJS_VERSION - Specify the version of PhantomJS
 # * PHANTOMJS_HOST - Specify the location of the download for the specified version
+# (If you run into any rate limitting issues from bitbucket, put the download file(s) into your own
+#  server/s3 bucket and point to the location of the host in PHANTOMJS_HOST)
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/phantomjs.sh | bash -s
