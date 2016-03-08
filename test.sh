@@ -70,6 +70,8 @@ source languages/go.sh
 go version | grep ${GO_VERSION}
 export GO_VERSION="1.5"
 source languages/go.sh
+export GO_VERSION="1.6"
+source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/go.sh)"
 go version | grep ${GO_VERSION}
 export GO_VERSION="1.4.2"
 source languages/go.sh
