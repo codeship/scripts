@@ -43,4 +43,4 @@ aws elasticbeanstalk create-application-version --application-name "${AWS_APP_NA
 aws elasticbeanstalk update-environment --environment-name "${AWS_APP_ENVIRONMENT}" --version-label "${AWS_APP_VERSION:0:100}"
 
 # check if the deployment was successful
-eb_deployment_check "${AWS_APP_NAME}" "${AWS_APP_ENVIRONMENT}"
+eb_deployment_check "${AWS_APP_NAME}" "${AWS_APP_ENVIRONMENT}" "${AWS_APP_VERSION:0:100}"
