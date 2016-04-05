@@ -39,8 +39,8 @@ zip -x \*/.git\* -x .git\* -x \*.hg\* -r "${DEPLOYMENT_ARCHIVE:=${HOME}/${AWS_AP
 aws s3 cp "${DEPLOYMENT_ARCHIVE}" "s3://${AWS_S3_BUCKET}/${AWS_APP_VERSION}.zip"
 
 # create the new version on ElasticBeanstalk
-aws elasticbeanstalk create-application-version --application-name "${AWS_APP_NAME}" --version-label "${AWS_APP_VERSION:0:100}" --source-bundle S3Bucket="${AWS_S3_BUCKET}",S3Key="subfolder/aws_deployment_${AWS_APPLICATION_VERSION}.zip"
+aws elasticbeanstalk create-application-version --application-name "${AWS_APP_NAME}" --version-label "${AWS_APP_VERSION:0:100}" --source-bundle S3Bucket="${AWS_S3_BUCKET}",S3Key="subfolder/aws_deployment_${AWS_APP_VERSION:0:100}.zip"
 aws elasticbeanstalk update-environment --environment-name "${AWS_APP_ENVIRONMENT}" --version-label "${AWS_APP_VERSION:0:100}"
 
 # check if the deployment was successful
-eb_deployment_check "${AWS_APP_NAME}" "${AWS_APP_ENVIRONMENT}"
+eb_deployment_check "${AWS_APP_NAME}" "${AWS_APP_ENVIRONMENT}" "${AWS_APP_VERSION:0:100}"
