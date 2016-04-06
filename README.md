@@ -17,9 +17,13 @@ Each script includes a comment at the beginning detailing how to configure and u
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/firefox.sh | bash -s
 ```
 
-It is important that you follow those instructions and not simply copy / paste the scripts into your Codeship project configuration.
+**It is important that you follow those instructions and not simply copy / paste the scripts into your Codeship project configuration.**
 
-Most scripts include `set -e` to make the script fail as soon as a command returns a non-zero exit code (which indicates failure). This is fine if you call the script as documented above (via the `curl` command). But it will have side effects if you copy the commands into your settings on codeship.com as any failing command (after the `set -x`) will terminate your build with a `SYSTEM` error message. (Reason being, that this command will cause the SSH connection to be terminated once another command fails.) You probably don't want this :)
+Most scripts include `set -e` to make the script fail as soon as a subcommand returns a non-zero exit code (which indicates failure).
+
+This is fine if you call the script as documented above (via the `curl` command). But it will have side effects if you copy the commands into your settings on [codeship.com](https://codeship.com) as any command that fails after the `set -e`) will terminate your build. You'll get a `SYSTEM` build status, but no further error message or log output. You probably don't want this :)
+
+Please see the post at https://community.codeship.com/t/npm-test-a-b-c-where-b-throws-but-result-shows-ok/61/3 for more information on how `set -e` works and why this causes issues if you include it in your setup or test commands.
 
 ## Code of Conduct
 
