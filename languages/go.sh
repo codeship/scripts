@@ -25,5 +25,5 @@ mkdir -p "${GOROOT}"
 wget --continue --output-document "${CACHED_DOWNLOAD}" "https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${GOROOT}"
 
-# check the correct version is yused
+# check the correct version is used
 go version | grep ${GO_VERSION}
