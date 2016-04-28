@@ -10,6 +10,11 @@
 # * PHANTOMJS_VERSION - Specify the version of PhantomJS
 # * PHANTOMJS_HOST - Optional, specify the download location for the archive
 #
+# For versions 1.9.7, 1.9.8 and 2.1.1 you can also use a Codeship provided mirror
+# by setting the PHANTOMJS_HOST variable to https://s3.amazonaws.com/codeship-packages
+#
+# export PHANTOMJS_HOST="https://s3.amazonaws.com/codeship-packages"
+#
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/phantomjs.sh | bash -s
 PHANTOMJS_VERSION=${PHANTOMJS_VERSION:="1.9.8"}
