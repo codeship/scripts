@@ -73,6 +73,12 @@ export GO_VERSION="1.4.2"
 source languages/go.sh
 go version | grep ${GO_VERSION}
 
+export ERLANG_VERSION="18.3"
+source languages/erlang.sh
+
+export ELIXIR_VERSION="1.2.3"
+source languages/elixir.sh
+
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
 
