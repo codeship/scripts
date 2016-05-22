@@ -20,7 +20,7 @@ DATADOG_API_KEY=${DATADOG_API_KEY:?'You need to configure the DATADOG_API_KEY en
 DATADOG_TITLE=${DATADOG_TITLE:-"Deployment"}
 DATADOG_DESCRIPTION=${DATADOG_DESCRIPTION:-$CI_MESSAGE}
 DATADOG_PRIORITY=${DATADOG_PRIORITY:-'low'}
-DATADOG_TAGS=${DATADOG_TAGS:-"[\"CI_NAME\",\"commit:CI_COMMIT_ID\",\"committer:CI_COMMITTER_USERNAME\"]"}
+DATADOG_TAGS=${DATADOG_TAGS:-"[\"$CI_NAME\",\"commit:$CI_COMMIT_ID\",\"committer:$CI_COMMITTER_USERNAME\"]"}
 
 #sanitize semicolons, remove newlines, and replace multiple spaces with a single space
 DATADOG_TITLE=$(echo ${DATADOG_TITLE//;/%3B}|sed ':a;N;$!ba;s/\n/ /g'|tr -s ' ')
