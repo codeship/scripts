@@ -8,16 +8,16 @@
 # https://codeship.com/documentation/languages/java-and-jvm-based-languages/
 # for more information.
 #
-# To run this exact configuration, add the following to your builds:
-curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/solr.sh | bash -s
+# To run this exact configuration and start solr, add the following to your builds:
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/solr.sh | bash -s
 
 # Set Java version
 jdk_switcher home oraclejdk8
 jdk_switcher use oraclejdk8
 
 # Install solr
-SOLR_VERSION="6.0.0"
-SOLR_MIRROR_URL="http://mirror.olnevhost.net/pub/apache/lucene/solr"
+SOLR_VERSION=${SOLR_VERSION:="6.0.0"}
+SOLR_MIRROR_URL=${SOLR_MIRROR_URL:="http://mirror.olnevhost.net/pub/apache/lucene/solr"}
 CACHED_DOWNLOAD="${HOME}/cache/solr-${SOLR_VERSION}.zip"
 
 rm -rf ~/.solr
@@ -30,6 +30,3 @@ unzip -o "${CACHED_DOWNLOAD}" -d "${HOME}/.solr/"
 # for full reference to start, restart, and stop solr nodes
 # Start solr on Codeship
 ${HOME}/.solr/solr-${SOLR_VERSION}/bin/solr start -e cloud -noprompt
-
-# Stop solr on Codeship
-${HOME}/.solr/solr-${SOLR_VERSION}/bin/solr stop
