@@ -55,6 +55,11 @@ export DART_VERSION="1.12.0"
 bash packages/dart.sh
 dart --version 2>&1 | grep "${DART_VERSION}"
 
+# Solr
+export SOLR_PORT="8983"
+bash packages/solr.sh
+netstat -lnp | grep "${SOLR_PORT}"
+
 # JX framework
 bash packages/jx.sh
 jx --version
