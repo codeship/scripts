@@ -1,10 +1,15 @@
 #!/bin/bash
-# Install JX, http://jxcore.com
+# Install JX, https://github.com/jxcore/jxcore
 #
-# Include in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/jx.sh | bash -s
-set -#!/usr/bin/env
+# This installation script is not working any longer, as development of the
+# platform was stopped and binaries are not available any longer.
+#
+# This script is kept to provide an error message to users still using it and
+# will be removed in the future.
+function error() { echo -e "\033[0;31m$*\033[0m"; }
 
-cd "${HOME}/bin" 2>&1 >/dev/null
-curl -sSL https://raw.githubusercontent.com/jxcore/jxcore/master/tools/jx_install.sh | sed -e 's/LOCAL_INSTALL="no"/LOCAL_INSTALL="yes"/g' | bash
-cd - 2>&1 >/dev/null
+error "Nubisa stopped active development of the JXcore platform."
+error "This caused the installation script to fail with a 'Could not fetch' error."
+error "See http://www.nubisa.com/nubisa-halting-active-development-on-jxcore-platform/ for more information"
+
+exit 1

@@ -55,10 +55,6 @@ export DART_VERSION="1.12.0"
 bash packages/dart.sh
 dart --version 2>&1 | grep "${DART_VERSION}"
 
-# JX framework
-bash packages/jx.sh
-jx --version
-
 # git LFS
 export GIT_LFS_VERSION="1.1.0"
 bash packages/git-lfs.sh
