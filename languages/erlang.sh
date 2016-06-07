@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install a custom Go version, https://golang.org/
+# Install a custom Erlang version, https://www.erlang.org/
 #
 # Add at least the following environment variables to your project configuration
 # (otherwise the defaults below will be used).

@@ -1,5 +1,8 @@
 #!/bin/bash
-# Install a custom Go version, https://golang.org/
+# Install a custom Elixir version, http://elixir-lang.org/
+#
+# In most cases you'll need to also include the custom Erlang script from this
+# repository (same folder) to install a suitable version of the Erlang VM.
 #
 # Add at least the following environment variables to your project configuration
 # (otherwise the defaults below will be used).
