@@ -72,6 +72,12 @@ go version | grep ${GO_VERSION}
 export GO_VERSION="1.4.2"
 source languages/go.sh
 go version | grep ${GO_VERSION}
+export PYTHON_VERSION="3.5.1"
+source languages/python.sh
+python --version | grep "${PYTHON_VERSION}"
+#export PYTHON_VERSION="3.5.0"
+#source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/python.sh)"
+#python --version | grep "${PYTHON_VERSION}"
 
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
