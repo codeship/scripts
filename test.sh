@@ -79,6 +79,12 @@ python --version | grep "${PYTHON_VERSION}"
 #source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/python.sh)"
 #python --version | grep "${PYTHON_VERSION}"
 
+export ERLANG_VERSION="18.3"
+source languages/erlang.sh
+
+export ELIXIR_VERSION="1.2.3"
+source languages/elixir.sh
+
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
 
