@@ -81,6 +81,11 @@ export ELIXIR_VERSION="1.2.3"
 source languages/elixir.sh
 elixir --version | grep "${ELIXIR_VERSION}"
 
+# Rust, default to the most recent stable version,
+# doesn't support different versions (yet)
+source languages/rust.sh
+rustc --version
+
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
 
