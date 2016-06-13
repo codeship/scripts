@@ -61,29 +61,25 @@ bash packages/git-lfs.sh
 git lfs env | grep "git-lfs/${GIT_LFS_VERSION}"
 
 echo "Testing language scripts"
-export GO_VERSION="1.4.2"
-source languages/go.sh
-go version | grep ${GO_VERSION}
-export GO_VERSION="1.5"
-source languages/go.sh
+# Go Lang
 export GO_VERSION="1.6"
-source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/go.sh)"
-go version | grep ${GO_VERSION}
-export GO_VERSION="1.4.2"
 source languages/go.sh
 go version | grep ${GO_VERSION}
+
+# Python
 export PYTHON_VERSION="3.5.1"
 source languages/python.sh
 python --version | grep "${PYTHON_VERSION}"
-#export PYTHON_VERSION="3.5.0"
-#source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/python.sh)"
-#python --version | grep "${PYTHON_VERSION}"
 
+# Erlang
 export ERLANG_VERSION="18.3"
 source languages/erlang.sh
+erl -eval '{ok, Version} = file:read_file(filename:join([code:root_dir(), "releases", erlang:system_info(otp_release), "OTP_VERSION"])), erlang:display(erlang:binary_to_list(Version)), halt().' -noshell | grep "${ERLANG_VERSION}"
 
+# Elixir, requires the Erlang script above
 export ELIXIR_VERSION="1.2.3"
 source languages/elixir.sh
+elixir --version | grep "${ELIXIR_VERSION}"
 
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
