@@ -86,6 +86,11 @@ elixir --version | grep "${ELIXIR_VERSION}"
 source languages/rust.sh
 rustc --version
 
+# R
+export R_VERSION="3.3.0"
+source languages/r.sh
+R --version | grep "${R_VERSION}"
+
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
 
