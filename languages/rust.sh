@@ -7,6 +7,6 @@
 # source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/rust.sh)"
 RUST_PATH=${RUST_PATH:=$HOME/rust}
 
-curl -sSf curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- --disable-sudo --prefix="${RUST_PATH}"
+curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- --disable-sudo --prefix="${RUST_PATH}"
 export PATH="${RUST_PATH}/bin:${PATH}"
 rustc --version
