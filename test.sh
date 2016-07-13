@@ -60,6 +60,19 @@ export GIT_LFS_VERSION="1.1.0"
 bash packages/git-lfs.sh
 git lfs env | grep "git-lfs/${GIT_LFS_VERSION}"
 
+# Haskell Stack
+export HASKELL_STACK_VERSION="1.1.0"
+bash packages/stack.sh
+stack --version | grep "1.1.0"
+
+# clear the symlink from the above installation
+rm -rf "${HOME}/bin/stack"
+
+export HASKELL_STACK_VERSION="latest"
+bash packages/stack.sh
+# latest version at the time of this code was written is 1.1.2
+! stack --version | grep "1.1.0"
+
 echo "Testing language scripts"
 # Go Lang
 export GO_VERSION="1.6"
