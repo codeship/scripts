@@ -19,4 +19,4 @@ eval "$(pyenv init -)"
 
 pyenv install "${PYTHON_VERSION}"
 pyenv local "${PYTHON_VERSION}"
-python --version | grep "${PYTHON_VERSION}"
+python --version 2>&1 | grep "${PYTHON_VERSION}"
