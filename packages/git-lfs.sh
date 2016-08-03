@@ -22,3 +22,5 @@ cd "${REPO_DIR}"
 git lfs fetch
 git lfs checkout
 cd -
+
+git lfs version | grep "git-lfs/${GIT_LFS_VERSION}"
