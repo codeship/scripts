@@ -56,7 +56,7 @@ bash packages/dart.sh
 dart --version 2>&1 | grep "${DART_VERSION}"
 
 # git LFS
-export GIT_LFS_VERSION="1.3.0"
+export GIT_LFS_VERSION="1.3.1"
 bash packages/git-lfs.sh
 git lfs version | grep "git-lfs/${GIT_LFS_VERSION}"
 
