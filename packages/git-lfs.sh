@@ -3,7 +3,7 @@
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/git-lfs.sh | bash -s
-GIT_LFS_VERSION="1.3.1"
+GIT_LFS_VERSION="1.4.0"
 
 set -e
 GIT_LFS_DIR=${GIT_LFS_DIR:="$HOME/git-lfs"}
