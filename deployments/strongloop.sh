@@ -7,8 +7,8 @@
 # * SL_DEPLOY_URL
 #
 # Include in your builds via
-SL_BUILD_VERSION=${SL_NPM_BUILD_VER:?'latest'}
-SL_DEPLOY_VERSION=${SL_NPM_DEPLOY_VER:?'latest'}
+SL_BUILD_VERSION=${SL_BUILD_VERSION:?'latest'}
+SL_DEPLOY_VERSION=${SL_DEPLOY_VERSION:?'latest'}
 SL_DEPLOY_URL=${SL_DEPLOY_URL:?'You need to configure the SL_DEPLOY_URL environment variable!'}
 
 # Fail the deployment on the first error
@@ -16,7 +16,7 @@ set -e
 
 nvm install 0.12.2
 nvm use 0.12.2
-npm install -g "strong-build@${SL_NPM_BUILD_VER}" "strong-deploy@${SL_NPM_DEPLOY_VER}""
+npm install -g "strong-build@${SL_BUILD_VERSION}" "strong-deploy@${SL_DEPLOY_VERSION}"
 
 sl-build -n
 sl-deploy "${SL_DEPLOY_URL}"

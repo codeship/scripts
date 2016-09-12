@@ -57,4 +57,4 @@ fi
 # aws s3 sync build s3://xyz/ --cache-control="no-cache" --delete
 
 # Is eval unsafe ?
-eval $BASE_COMMAND
+eval "${BASE_COMMAND}"
