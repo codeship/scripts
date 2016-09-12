@@ -75,7 +75,7 @@ bash packages/stack.sh
 
 echo "Testing language scripts"
 # Go Lang
-export GO_VERSION="1.6"
+export GO_VERSION="1.7"
 source languages/go.sh
 go version | grep ${GO_VERSION}
 
