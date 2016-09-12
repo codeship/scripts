@@ -21,6 +21,9 @@ function run_all_scripts_in_dir_in_parallel() {
   ls "${1}" | run_parallel "bash ${1}/{}"
 }
 
+echo "Installing ShellCheck"
+bash packages/shellcheck.sh
+
 echo "Testing scripts for dependency caches"
 run_all_scripts_in_dir_in_parallel "${DIR}/cache"
 
@@ -100,6 +103,7 @@ rustc --version
 export R_VERSION="3.3.0"
 source languages/r.sh
 R --version | grep "${R_VERSION}"
+
 
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
