@@ -20,6 +20,6 @@ fi
 # compile and enable the extension
 cd "${CACHED_REPOSITORY}/build"
 ./install >/dev/null
-echo "extension=phalcon.so" >> /home/rof/.phpenv/versions/${PHP_VERSION}/etc/php.ini
+echo "extension=phalcon.so" >> "/home/rof/.phpenv/versions/${PHP_VERSION}/etc/php.ini"
 
-cd "${PWD}"
+cd "${CWD}"
