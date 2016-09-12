@@ -9,10 +9,11 @@
 # Include in your builds via
 # source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/python.sh)"
 PYTHON_VERSION=${PYTHON_VERSION:="3.5.0"}
+PYENV_ROOT=${PYENV_ROOT:=$HOME/pyenv}
 
-git clone https://github.com/yyuu/pyenv.git ${HOME}/pyenv
+git clone https://github.com/yyuu/pyenv.git "${PYENV_ROOT}"
 
-export PYENV_ROOT="${HOME}/pyenv"
+export PYENV_ROOT
 export PATH="${PYENV_ROOT}/bin:${PATH}"
 
 eval "$(pyenv init -)"

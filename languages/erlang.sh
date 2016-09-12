@@ -18,7 +18,7 @@ ERLANG_PATH=$(realpath "${ERLANG_PATH}")
 
 wget --continue --output-document "${CACHED_DOWNLOAD}" "https://s3.amazonaws.com/heroku-buildpack-elixir/erlang/cedar-14/OTP-${ERLANG_VERSION}.tar.gz"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${ERLANG_PATH}"
-${ERLANG_PATH}/Install -minimal "${ERLANG_PATH}"
+"${ERLANG_PATH}/Install" -minimal "${ERLANG_PATH}"
 
 export PATH="${ERLANG_PATH}/bin:${PATH}"
 

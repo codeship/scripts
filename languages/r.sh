@@ -16,10 +16,11 @@ mkdir -p "${R_PATH}"
 wget --continue --output-document "${CACHED_DOWNLOAD}" "https://cran.r-project.org/src/base/R-${R_VERSION%%.*}/R-${R_VERSION}.tar.gz"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${R_PATH}"
 
-cd "${R_PATH}"
-./configure
-make
-cd -
+(
+  cd "${R_PATH}" || exit 1
+  ./configure
+  make
+)
 
 export PATH="${R_PATH}/bin:${PATH}"
 
