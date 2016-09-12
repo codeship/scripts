@@ -24,6 +24,20 @@ function run_all_scripts_in_dir_in_parallel() {
 echo "Installing ShellCheck"
 bash packages/shellcheck.sh
 
+echo "Running ShellCheck..."
+echo "... on cache scripts"
+shellcheck cache/*
+echo "... on deployment scripts (PENDING)"
+shellcheck deployments/* || true
+echo "... on languages installation scripts"
+shellcheck languages/*
+echo "... on notification scripts (PENDING)"
+shellcheck notifications/* || true
+echo "... on package installation scripts (PENDING)"
+shellcheck packages/* || true
+echo "... on utilities cripts (PENDING)"
+shellcheck utilities/* || true
+
 echo "Testing scripts for dependency caches"
 run_all_scripts_in_dir_in_parallel "${DIR}/cache"
 
