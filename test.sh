@@ -60,6 +60,11 @@ export GIT_LFS_VERSION="1.4.0"
 bash packages/git-lfs.sh
 git lfs version | grep "git-lfs/${GIT_LFS_VERSION}"
 
+# ChromeDriver
+export CHROMEDRIVER_VERSION="2.24"
+bash packages/chromedriver.sh
+chromedriver --version | grep "ChromeDriver ${CHROMEDRIVER_VERSION}"
+
 # Haskell Stack
 export HASKELL_STACK_VERSION="1.1.0"
 bash packages/stack.sh
