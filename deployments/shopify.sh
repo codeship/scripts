@@ -23,5 +23,5 @@ set -e
 
 gem install shopify_theme --no-ri --no-rdoc
 theme configure "${SHOPIFY_API_KEY}" "${SHOPIFY_API_PASSWORD}" "${SHOPIFY_STORE_URL}" "${SHOPIFY_THEME_ID}"
-git diff-tree -r --no-commit-id --name-only --diff-filter=ACMRT $COMMIT_ID | xargs theme upload
-git diff-tree -r --no-commit-id --name-only --diff-filter=D $COMMIT_ID | xargs theme remove
+git diff-tree -r --no-commit-id --name-only --diff-filter=ACMRT "${COMMIT_ID}" | xargs theme upload
+git diff-tree -r --no-commit-id --name-only --diff-filter=D "${COMMIT_ID}" | xargs theme remove

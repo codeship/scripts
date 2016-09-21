@@ -21,6 +21,23 @@ function run_all_scripts_in_dir_in_parallel() {
   ls "${1}" | run_parallel "bash ${1}/{}"
 }
 
+echo "Installing ShellCheck"
+bash packages/shellcheck.sh
+
+echo "Running ShellCheck..."
+echo "... on cache scripts"
+shellcheck cache/*
+echo "... on deployment scripts (PENDING)"
+shellcheck deployments/* || true
+echo "... on languages installation scripts"
+shellcheck languages/*
+echo "... on notification scripts (PENDING)"
+shellcheck notifications/* || true
+echo "... on package installation scripts (PENDING)"
+shellcheck packages/* || true
+echo "... on utilities cripts (PENDING)"
+shellcheck utilities/* || true
+
 echo "Testing scripts for dependency caches"
 run_all_scripts_in_dir_in_parallel "${DIR}/cache"
 
@@ -43,9 +60,6 @@ bash packages/firefox.sh
 firefox --version | grep "${FIREFOX_VERSION}"
 
 # Phalcon PHP framework
-phpenv local 5.5
-bash packages/phalcon.sh
-php -m | grep phalcon
 phpenv local 5.6
 bash packages/phalcon.sh
 php -m | grep phalcon
@@ -80,7 +94,7 @@ bash packages/stack.sh
 
 echo "Testing language scripts"
 # Go Lang
-export GO_VERSION="1.6"
+export GO_VERSION="1.7"
 source languages/go.sh
 go version | grep ${GO_VERSION}
 
@@ -108,6 +122,7 @@ rustc --version
 export R_VERSION="3.3.0"
 source languages/r.sh
 R --version | grep "${R_VERSION}"
+
 
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
