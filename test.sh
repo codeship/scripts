@@ -136,8 +136,8 @@ WGET_OPTIONS="--no-check-certificate" bash utilities/check_url.sh -w 2 -t 2 http
 ! bash utilities/check_url.sh -w 2 -t 2 https://cacert.org
 
 # test check_port
-bash utilities/check_port 3306
-! bash utilities/check_port 80
+bash utilities/check_port.sh 3306
+! bash utilities/check_port.sh 80
 
 # test ensure_called
 bash utilities/ensure_called.sh "echo Hello World" | grep "Hello World"
