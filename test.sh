@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -134,6 +134,10 @@ bash utilities/check_url.sh -w 2 -t 2 https://codeship.com
 # test check_url certificate warnings
 WGET_OPTIONS="--no-check-certificate" bash utilities/check_url.sh -w 2 -t 2 https://cacert.org
 ! bash utilities/check_url.sh -w 2 -t 2 https://cacert.org
+
+# test check_port
+bash utilities/check_port 3306
+! bash utilities/check_port 80
 
 # test ensure_called
 bash utilities/ensure_called.sh "echo Hello World" | grep "Hello World"
