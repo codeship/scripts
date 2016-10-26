@@ -10,19 +10,25 @@ OPTIONS=${WGET_OPTIONS:="--output-document=/dev/null"}
 TRIES=6
 WAIT=10
 
-while getopts "t:w" opt; do
-  case $opt in
-    t)
-      TRIES=${OPTARG}
+while [[ "$#" > 1 ]]; do
+    case $1 in
+      -t)
+          TRIES=$2
+          ;;
+      -w)
+          WAIT=$2
       ;;
-    w)
-      WAIT=${OPTARG}
-      ;;
-  esac
+      *)
+        ;;
+    esac;
+
+    shift
 done
 
 # set the URL
 URL=${@}
+
+echo "Checking $URL for $TRIES times with $WAIT seconds waiting time between the checks."
 
 function retry {
   local tries=${1} && shift
