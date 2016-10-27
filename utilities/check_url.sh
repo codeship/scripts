@@ -10,7 +10,7 @@ OPTIONS=${WGET_OPTIONS:="--output-document=/dev/null"}
 TRIES=6
 WAIT=10
 
-while getopts "t:w" opt; do
+while getopts "t:w:" opt; do
   case $opt in
     t)
       TRIES=${OPTARG}
