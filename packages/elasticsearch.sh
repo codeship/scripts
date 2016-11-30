@@ -15,8 +15,11 @@ ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
 ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
 ELASTICSEARCH_WAIT_TIME=${ELASTICSEARCH_WAIT_TIME:="30"}
 
-# The download location of version 2.x seems to follow a different URL structure to 1.x
-if [ ${ELASTICSEARCH_VERSION:0:1} -eq 2 ]
+# The download location of version 5.x, and 2.x seems to follow a different URL structure to 1.x
+if [ ${ELASTICSEARCH_VERSION:0:1} -eq 5 ]
+then
+  ELASTICSEARCH_DL_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
+elif [ ${ELASTICSEARCH_VERSION:0:1} -eq 2 ]
 then
   ELASTICSEARCH_DL_URL="https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ELASTICSEARCH_VERSION}/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
 else
