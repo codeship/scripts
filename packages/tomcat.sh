@@ -22,7 +22,6 @@ tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${TOMCAT_DIR}"
 # Make sure to use the exact parameters you want for Tomcat and give it enough sleep time to properly start up
 bash ${TOMCAT_DIR}/bin/startup.sh
 sleep ${TOMCAT_WAIT_TIME}
-cd -
 
 # check if tomcat successfully installs
 bash tomcat/bin/version.sh | grep "Apache Tomcat/${TOMCAT_VERSION}"
