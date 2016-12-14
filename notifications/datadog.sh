@@ -7,8 +7,12 @@
 # * DATADOG_API_KEY
 #
 # You have the option to define the environment variables below, else defaults will be applied.
+# Default configuration of this script is for Codeship's Classic infrastructure.
 # For more details on Default Environment Variables (those starting with "CI_"), please visit:
-# https://codeship.com/documentation/continuous-integration/set-environment-variables/
+# Classic Infrastructure
+# https://documentation.codeship.com/classic/getting-started/set-environment-variables/#default-environment-variables
+# Docker Infrastructure
+# https://documentation.codeship.com/docker/getting-started/steps/#build-environment
 # 
 # * DATADOG_TITLE  ( Default: "Deployment" )
 # * DATADOG_DESCRIPTION  ( Default: CI_MESSAGE )
