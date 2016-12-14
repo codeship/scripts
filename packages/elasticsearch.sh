@@ -15,7 +15,10 @@ ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
 ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
 ELASTICSEARCH_WAIT_TIME=${ELASTICSEARCH_WAIT_TIME:="30"}
 
-# The download location of version 5.x, and 2.x seems to follow a different URL structure to 1.x
+# The download location of version 5.x, and 2.x seems to follow a different URL structure to 1.x\
+# Make sure to use Oracle JDK 8 for Elasticsearch 5.x run the following commands in your script.
+# jdk_switcher home oraclejdk8
+# jdk_switcher use oraclejdk8
 if [ ${ELASTICSEARCH_VERSION:0:1} -eq 5 ]
 then
   ELASTICSEARCH_DL_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
