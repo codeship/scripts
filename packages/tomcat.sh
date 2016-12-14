@@ -24,4 +24,4 @@ bash ${TOMCAT_DIR}/bin/startup.sh
 sleep ${TOMCAT_WAIT_TIME}
 
 # check if tomcat successfully installs
-bash tomcat/bin/version.sh | grep "Apache Tomcat/${TOMCAT_VERSION}"
+bash ${TOMCAT_DIR}/bin/version.sh | grep "Apache Tomcat/${TOMCAT_VERSION}"
