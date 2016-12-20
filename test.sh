@@ -148,4 +148,4 @@ bash utilities/ensure_called.sh true false "echo Hello World" | grep "Hello Worl
 # tomcat
 export TOMCAT_VERSION="8.5.9"
 bash packages/tomcat.sh
-bash tomcat/bin/version.sh | grep "Apache Tomcat/${TOMCAT_VERSION}"
+bash ${HOME}/tomcat/bin/version.sh | grep "Apache Tomcat/${TOMCAT_VERSION}"
