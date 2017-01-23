@@ -17,7 +17,7 @@ set -e
 CACHED_DOWNLOAD="${HOME}/cache/dynamedb_local_${DYNAMODB_VERSION}.tar.gz"
 
 mkdir -p "${DYNAMODB_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_${DYNAMODB_VERSION}.tar.gz"
+wget --continue --output-document "${CACHED_DOWNLOAD}" "https://s3-us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_${DYNAMODB_VERSION}.tar.gz"
 tar -xaf "${CACHED_DOWNLOAD}" --directory "${DYNAMODB_DIR}"
 
 # Make sure to use the exact parameters you want for DynamoDB and give it enough sleep time to properly start up
