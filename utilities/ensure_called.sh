@@ -7,7 +7,7 @@
 # then use the script in your tests like
 # ensure_called "test command to execute" [command2 ...] "on_exit handler"
 COMMANDS=( "${@?$'\n'Usage: $0 command1 [command2 ...] exit_handler}" )
-EXIT_HANDLER="${@: -1}"
+EXIT_HANDLER=${@: -1}
 
 # remove the last element from the COMMANDS array (which is the exit_handler)
 unset "COMMANDS[${#}-1]"
