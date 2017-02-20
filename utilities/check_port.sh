@@ -13,7 +13,7 @@ function check_port() {
   local retries=5
   local wait=1
 
-  until( nc -zv ${host} ${port} ); do
+  until( nc -zv "${host}" "${port}" ); do
     ((retries--))
     if [ $retries -lt 0 ]; then
       echo "Service ${host}:${port} didn't become ready in time."
