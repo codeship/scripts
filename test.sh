@@ -36,7 +36,8 @@ shellcheck notifications/* || true
 echo "... on package installation scripts (PENDING)"
 shellcheck packages/* || true
 echo "... on utilities cripts (PENDING)"
-shellcheck utilities/* || true
+# ignore SC1071: ShellCheck only supports sh/bash/ksh scripts.
+shellcheck -e SC1071 utilities/* || true
 
 echo "Testing scripts for dependency caches"
 run_all_scripts_in_dir_in_parallel "${DIR}/cache"
@@ -130,6 +131,7 @@ R --version | grep "${R_VERSION}"
 
 echo "Testing utility scripts"
 source utilities/random_timezone.sh
+env | grep TZ
 
 # test check_url
 bash utilities/check_url.sh -w 2 -t 2 https://codeship.com
