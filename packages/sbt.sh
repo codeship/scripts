@@ -10,6 +10,16 @@ set -e
 CACHED_DOWNLOAD="${HOME}/cache/sbt-${SBT_VERSION}.jar"
 
 wget --continue --output-document "${CACHED_DOWNLOAD}" "https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/${SBT_VERSION}/sbt-launch.jar"
-echo 'SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"' > "${HOME}/bin/sbt"
-echo "java $SBT_OPTS -jar ${CACHED_DOWNLOAD} \"$@\"" >> "${HOME}/bin/sbt"
+
+cat <<EOF > "${HOME}/bin/sbt"
+java \
+	-Xms512M \
+	-Xmx1536M \
+	-Xss1M \
+	-XX:+CMSClassUnloadingEnabled \
+	-XX:MaxPermSize=256M \
+	-jar ${CACHED_DOWNLOAD} \
+	\$@
+EOF
 chmod u+x "${HOME}/bin/sbt"
+sbt --version | grep "${SBT_VERSION}"

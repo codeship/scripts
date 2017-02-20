@@ -92,6 +92,10 @@ bash packages/stack.sh
 # latest version at the time of this code was written is 1.1.2
 ! stack --version | grep "1.1.0"
 
+export SBT_VERSION="0.13.8"
+bash packages/sbt.sh
+sbt --version | grep "0.13.8"
+
 echo "Testing language scripts"
 # Go Lang
 export GO_VERSION="1.7"
