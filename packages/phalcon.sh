@@ -3,23 +3,22 @@
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/phalcon.sh | bash -s
+PHALCON_VERSION=${PHALCON_VERSION:="3.0.3"}
 
 set -e
-CACHED_REPOSITORY="${HOME}/cache/cphalcon/"
 CWD=$(pwd)
+CACHED_DOWNLOAD="${HOME}/cache/cphalcon_v${PHALCON_VERSION}.tar.gz"
+PHALCON_DIR=${PHALCON_DIR:="$HOME/phalcon"}
 PHP_VERSION=$(phpenv version | grep -Eoe "([[:digit:]]+\.?)+")
 
-# clone or update the repository
-if [ ! -d "${CACHED_REPOSITORY}" ]; then
-	git clone --depth=1 git://github.com/phalcon/cphalcon.git "${CACHED_REPOSITORY}" >/dev/null
-else
-	cd "${CACHED_REPOSITORY}"
-	git pull origin master >/dev/null
-fi
+mkdir -p "${PHALCON_DIR}"
+wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/phalcon/cphalcon/archive/v${PHALCON_VERSION}.tar.gz"
+tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${PHALCON_DIR}"
 
 # compile and enable the extension
-cd "${CACHED_REPOSITORY}/build"
+cd "${PHALCON_DIR}/build"
 ./install >/dev/null
 echo "extension=phalcon.so" >> "/home/rof/.phpenv/versions/${PHP_VERSION}/etc/php.ini"
 
 cd "${CWD}"
+php -m | grep phalcon
