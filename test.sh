@@ -70,6 +70,11 @@ export DART_VERSION="1.12.0"
 bash packages/dart.sh
 dart --version 2>&1 | grep "${DART_VERSION}"
 
+# git
+export GIT_VERSION="2.11.1"
+bash packages/git.sh
+git --version | grep "${GIT_VERSION}"
+
 # git LFS
 export GIT_LFS_VERSION="1.4.0"
 bash packages/git-lfs.sh
