@@ -7,5 +7,5 @@
 
 curl -sSf https://sh.rustup.rs | sh -s -- -y
 # shellcheck source=/dev/null
-source $HOME/.cargo/env
+source "${HOME}/.cargo/env"
 rustc --version
