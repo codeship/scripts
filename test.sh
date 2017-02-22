@@ -48,6 +48,11 @@ export SELENIUM_PORT=4444
 bash packages/selenium_server.sh
 netstat -lnp | grep "${SELENIUM_PORT}.*java"
 
+# ImageMagick
+export IMAGEMAGICK_VERSION="7.0.5-0"
+bash packages/imagemagick.sh
+identify -version | grep "${IMAGEMAGICK_VERSION}"
+
 export MONGODB_PORT=27018
 bash packages/mongodb.sh
 netstat -lnp | grep "${MONGODB_PORT}.*mongod"
