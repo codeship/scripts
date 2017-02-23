@@ -21,7 +21,8 @@ wget --continue --output-document "${CACHED_DOWNLOAD}" "https://s3-us-west-2.ama
 tar -xaf "${CACHED_DOWNLOAD}" --directory "${DYNAMODB_DIR}"
 
 # Make sure to use the exact parameters you want for DynamoDB and give it enough sleep time to properly start up
-cd ${DYNAMODB_DIR}
-nohup bash -c "java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory -port ${DYNAMODB_PORT} 2>&1" &
-sleep "${DYNAMODB_WAIT_TIME}"
-cd -
+(
+  cd ${DYNAMODB_DIR} || exit 1
+  nohup bash -c "java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory -port ${DYNAMODB_PORT} 2>&1" &
+  sleep "${DYNAMODB_WAIT_TIME}"
+)
