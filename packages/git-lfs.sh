@@ -14,13 +14,15 @@ mkdir -p "${GIT_LFS_DIR}"
 wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/github/git-lfs/releases/download/v${GIT_LFS_VERSION}/git-lfs-linux-amd64-${GIT_LFS_VERSION}.tar.gz"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${GIT_LFS_DIR}"
 
-cd "${GIT_LFS_DIR}"
-PREFIX=${HOME} ./install.sh
-cd -
+(
+  cd "${GIT_LFS_DIR}" || exit 1
+  PREFIX=${HOME} ./install.sh
+)
 
-cd "${REPO_DIR}"
-git lfs fetch
-git lfs checkout
-cd -
+(
+  cd "${REPO_DIR}" || exit 1
+  git lfs fetch
+  git lfs checkout
+)
 
 git lfs version | grep "git-lfs/${GIT_LFS_VERSION}"

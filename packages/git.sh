@@ -16,11 +16,13 @@ CACHED_DOWNLOAD="${HOME}/cache/git-${GIT_VERSION}.zip"
 
 wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/git/git/archive/v${GIT_VERSION}.zip"
 unzip -q "${CACHED_DOWNLOAD}" -d "${HOME}"
-cd "${HOME}/git-${GIT_VERSION}"
-autoconf
-./configure --prefix="${HOME}"
-make
-make install
-cd -
+
+(
+  cd "${HOME}/git-${GIT_VERSION}" || exit 1
+  autoconf
+  ./configure --prefix="${HOME}"
+  make
+  make install
+)
 
 git --version | grep "${GIT_VERSION}"
