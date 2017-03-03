@@ -18,9 +18,15 @@ bash packages/git.sh
 git --version | grep "${GIT_VERSION}"
 
 # Git LFS
-export GIT_LFS_VERSION="1.5.6"
+export GIT_LFS_VERSION="2.0.0"
 bash packages/git-lfs.sh
 git lfs version | grep "git-lfs/${GIT_LFS_VERSION}"
+
+# test warning message
+unset GIT_LFS_VERSION
+bash packages/git-lfs.sh | grep "Warning"
+git lfs version | grep "git-lfs/1.5.6"
+
 
 # ImageMagick
 export IMAGEMAGICK_VERSION="7.0.5-0"
