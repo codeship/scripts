@@ -6,7 +6,7 @@
 # * DART_VERSION
 #
 # Include in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/dart.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/dart.sh | bash -s
 DART_VERSION=${DART_VERSION:="1.13.0"}
 
 set -e

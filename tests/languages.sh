@@ -4,7 +4,7 @@ set -e
 
 # Dart
 export DART_VERSION="1.22.1"
-bash packages/dart.sh
+bash languages/dart.sh
 dart --version 2>&1 | grep "${DART_VERSION}"
 
 # Erlang
