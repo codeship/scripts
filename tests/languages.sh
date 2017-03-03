@@ -26,7 +26,6 @@ go version | grep "${GO_VERSION}"
 export PYTHON_VERSION="2.7.13"
 source languages/python.sh
 python --version 2>&1 | grep "${PYTHON_VERSION}"
-rm -rf "${HOME}/pyenv"
 
 # Python 3.*
 export PYTHON_VERSION="3.6.0"
