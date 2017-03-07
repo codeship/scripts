@@ -50,6 +50,11 @@ phpenv local 5.6
 bash packages/phalcon.sh
 php -m | grep phalcon
 
+# Poppler
+export POPPLER_VERSION="0.52.0"
+bash packages/poppler.sh
+pdftotext -v 2>&1 | grep "${POPPLER_VERSION}"
+
 # sbt
 export SBT_VERSION="0.13.8"
 bash packages/sbt.sh
