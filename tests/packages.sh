@@ -29,7 +29,7 @@ git lfs version | grep "git-lfs/1.5.6"
 
 
 # ImageMagick
-export IMAGEMAGICK_VERSION="7.0.5-0"
+export IMAGEMAGICK_VERSION="7.0.5-2"
 bash packages/imagemagick.sh
 identify -version | grep "${IMAGEMAGICK_VERSION}"
 
