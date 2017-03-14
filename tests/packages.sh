@@ -12,6 +12,11 @@ export FIREFOX_VERSION="51.0.1"
 bash packages/firefox.sh
 firefox --version | grep "${FIREFOX_VERSION}"
 
+# Ghostscript
+export GHOSTSCRIPT_VERSION="9.20"
+bash packages/ghostscript.sh
+ghostscript -version | grep "${GHOSTSCRIPT_VERSION}"
+
 # Git
 export GIT_VERSION="2.11.1"
 bash packages/git.sh
