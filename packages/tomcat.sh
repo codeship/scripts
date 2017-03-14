@@ -18,7 +18,7 @@ set -e
 CACHED_DOWNLOAD="${HOME}/cache/apache-tomcat-${TOMCAT_VERSION}.tar.gz"
 
 mkdir -p "${TOMCAT_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "http://www-us.apache.org/dist/tomcat/tomcat-${TOMCAT_VERSION:0:1}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz"
+wget --continue --output-document "${CACHED_DOWNLOAD}" "https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_VERSION:0:1}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${TOMCAT_DIR}"
 
 if [ "$TOMCAT_AUTOSTART" -eq "1" ]; then

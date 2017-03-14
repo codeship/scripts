@@ -72,6 +72,6 @@ bash packages/stack.sh
 stack --version | grep "${HASKELL_STACK_VERSION}"
 
 # Tomcat
-export TOMCAT_VERSION="8.5.11"
+export TOMCAT_VERSION="8.5.12"
 bash packages/tomcat.sh
 bash ${HOME}/tomcat/bin/version.sh | grep "Apache Tomcat/${TOMCAT_VERSION}"
