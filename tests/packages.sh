@@ -32,6 +32,9 @@ unset GIT_LFS_VERSION
 bash packages/git-lfs.sh | grep "Warning"
 git lfs version | grep "git-lfs/1.5.6"
 
+# Google Cloud SDK
+source packages/google-cloud-sdk.sh
+gcloud --version
 
 # ImageMagick
 export IMAGEMAGICK_VERSION="7.0.5-2"
