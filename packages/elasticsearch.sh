@@ -17,6 +17,7 @@ ELASTICSEARCH_WAIT_TIME=${ELASTICSEARCH_WAIT_TIME:="30"}
 
 # The download location of version 5.x, and 2.x seems to follow a different URL structure to 1.x\
 # Make sure to use Oracle JDK 8 for Elasticsearch 5.x run the following commands in your script.
+# source $HOME/bin/jdk/jdk_switcher
 # jdk_switcher home oraclejdk8
 # jdk_switcher use oraclejdk8
 if [ ${ELASTICSEARCH_VERSION:0:1} -eq 5 ]
