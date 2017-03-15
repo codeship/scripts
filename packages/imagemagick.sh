@@ -10,20 +10,24 @@
 # * IMAGEMAGICK_VERSION
 #
 IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:="7.0.5-2"}
+IMAGEMAGICK_DIR=${IMAGEMAGICK_DIR:=$HOME/cache/imagemagick-$IMAGEMAGICK_VERSION}
 
 set -e
-IMAGEMAGICK_DIR=${IMAGEMAGICK_DIR:=$HOME/imagemagick}
-CACHED_DOWNLOAD="${HOME}/cache/ImageMagick-${IMAGEMAGICK_VERSION}.tar.xz"
 
-mkdir -p "${IMAGEMAGICK_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://www.imagemagick.org/download/releases/ImageMagick-${IMAGEMAGICK_VERSION}.tar.xz"
-tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${IMAGEMAGICK_DIR}"
+if [ ! -d "${IMAGEMAGICK_DIR}" ]; then
+  CACHED_DOWNLOAD="${HOME}/cache/ImageMagick-${IMAGEMAGICK_VERSION}.tar.xz"
 
-(
-  cd "${IMAGEMAGICK_DIR}" || exit 1
-  ./configure --prefix="${HOME}"
-  make
-  make install
-)
+  mkdir -p "${HOME}/imagemagick"
+  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://www.imagemagick.org/download/releases/ImageMagick-${IMAGEMAGICK_VERSION}.tar.xz"
+  tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${HOME}/imagemagick"
 
+  (
+    cd "${HOME}/imagemagick" || exit 1
+    ./configure --prefix="${IMAGEMAGICK_DIR}"
+    make
+    make install
+  )
+fi
+
+ln -s "${IMAGEMAGICK_DIR}/bin/"* "${HOME}/bin"
 identify -version | grep "${IMAGEMAGICK_VERSION}"
