@@ -10,20 +10,24 @@
 # * POPPLER_VERSION
 #
 POPPLER_VERSION=${POPPLER_VERSION:="0.52.0"}
+POPPLER_DIR=${POPPLER_DIR:=$HOME/cache/poppler-$POPPLER_VERSION}
 
 set -e
-POPPLER_DIR=${POPPLER_DIR:=$HOME/poppler}
-CACHED_DOWNLOAD="${HOME}/cache/poppler-${POPPLER_VERSION}.tar.xz"
 
-mkdir -p "${POPPLER_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://poppler.freedesktop.org/poppler-${POPPLER_VERSION}.tar.xz"
-tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${POPPLER_DIR}"
+if [ ! -d "${POPPLER_DIR}" ]; then
+  CACHED_DOWNLOAD="${HOME}/cache/poppler-${POPPLER_VERSION}.tar.xz"
 
-(
-  cd "${POPPLER_DIR}" || exit 1
-  ./configure --prefix="${HOME}"
-  make
-  make install
-)
+  mkdir -p "${HOME}/poppler"
+  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://poppler.freedesktop.org/poppler-${POPPLER_VERSION}.tar.xz"
+  tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${HOME}/poppler"
 
+  (
+    cd "${HOME}/poppler" || exit 1
+    ./configure --prefix="${POPPLER_DIR}"
+    make
+    make install
+  )
+fi
+
+ln -s "${POPPLER_DIR}/bin/"* "${HOME}/bin"
 pdftotext -v 2>&1 | grep "${POPPLER_VERSION}"
