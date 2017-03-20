@@ -37,7 +37,7 @@ source packages/google-cloud-sdk.sh
 gcloud --version
 
 # ImageMagick
-export IMAGEMAGICK_VERSION="7.0.5-3"
+export IMAGEMAGICK_VERSION="7.0.5-0"
 bash packages/imagemagick.sh
 identify -version | grep "${IMAGEMAGICK_VERSION}"
 
