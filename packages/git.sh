@@ -9,20 +9,26 @@
 # (otherwise the default below will be used).
 # * GIT_VERSION
 #
-GIT_VERSION=${GIT_VERSION:="2.11.1"}
+GIT_VERSION=${GIT_VERSION:="2.12.0"}
+GIT_DIR=${GIT_DIR:=$HOME/cache/git-$GIT_VERSION}
 
 set -e
-CACHED_DOWNLOAD="${HOME}/cache/git-${GIT_VERSION}.zip"
 
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/git/git/archive/v${GIT_VERSION}.zip"
-unzip -q "${CACHED_DOWNLOAD}" -d "${HOME}"
+if [ ! -d "${GIT_DIR}" ]; then
+  CACHED_DOWNLOAD="${HOME}/cache/git-${GIT_VERSION}.tar.gz"
 
-(
-  cd "${HOME}/git-${GIT_VERSION}" || exit 1
-  autoconf
-  ./configure --prefix="${HOME}"
-  make
-  make install
-)
+  mkdir -p "${HOME}/git"
+  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/git/git/archive/v${GIT_VERSION}.tar.gz"
+  tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${HOME}/git"
 
+  (
+    cd "${HOME}/git" || exit 1
+    autoconf
+    ./configure --prefix="${GIT_DIR}"
+    make
+    make install
+  )
+fi
+
+ln -s "${GIT_DIR}/bin/"* "${HOME}/bin"
 git --version | grep "${GIT_VERSION}"

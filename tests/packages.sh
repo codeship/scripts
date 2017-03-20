@@ -18,7 +18,7 @@ bash packages/ghostscript.sh
 ghostscript -version | grep "${GHOSTSCRIPT_VERSION}"
 
 # Git
-export GIT_VERSION="2.11.1"
+export GIT_VERSION="2.12.0"
 bash packages/git.sh
 git --version | grep "${GIT_VERSION}"
 
