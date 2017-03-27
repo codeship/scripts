@@ -46,6 +46,12 @@ export MONGODB_VERSION="3.4.0"
 bash packages/mongodb.sh
 netstat -lnp | grep "${MONGODB_PORT}.*mongod"
 
+# MySQL 5.7
+export MYSQL_VERSION="5.7.17"
+bash packages/mysql-5.7.sh
+"$HOME/mysql-$MYSQL_VERSION/bin/mysql" --defaults-file="$HOME/mysql-$MYSQL_VERSION/my.cnf" --version | grep "${MYSQL_VERSION}"
+netstat -lnp | grep "3307"
+
 # Neo4j
 export NEO4J_VERSION="2.2.2"
 bash packages/neo4j.sh
