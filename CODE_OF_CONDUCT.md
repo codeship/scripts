@@ -67,8 +67,8 @@ members of the project's leadership.
 
 ## Project Maintainers
 
-* Benjamin Fritsch (Codeship Inc.) <<ben@codeship.com>>
-* Marko Locher (Codeship Inc.) <<marko@codeship.com>>
+* Joe Siewert (Codeship Inc.) <<joe.siewert@codeship.com>>
+* Marko Locher (Codeship Inc.) <<marko.locher@codeship.com>>
 
 ## Attribution
 
