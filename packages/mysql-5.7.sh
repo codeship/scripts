@@ -55,6 +55,7 @@ bind-address		= 127.0.0.1
 max_allowed_packet	= 16M
 thread_stack		= 192K
 thread_cache_size	= 8
+innodb_use_native_aio	= 0
 
 # * Query Cache Configuration
 query_cache_limit	= 1M
