@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-if [ -e "${HOME}/bin/shellcheck" ]; then
+if [ ! -e "${HOME}/bin/shellcheck" ]; then
 	echo "Installing ShellCheck"
 	bash packages/shellcheck.sh
 fi
