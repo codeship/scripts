@@ -1,9 +1,11 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
-echo "Installing ShellCheck"
-bash packages/shellcheck.sh
+if [ -e "${HOME}/bin/shellcheck" ]; then
+	echo "Installing ShellCheck"
+	bash packages/shellcheck.sh
+fi
 
 echo "Running ShellCheck..."
 echo "...on cache scripts"
