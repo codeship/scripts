@@ -18,7 +18,7 @@ set -e
 CACHED_DOWNLOAD="${HOME}/cache/mongodb-linux-x86_64-ubuntu1404-${MONGODB_VERSION}.tgz"
 
 mkdir -p "${MONGODB_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-${MONGODB_VERSION}.tgz"
+wget --continue --output-document "${CACHED_DOWNLOAD}" "http://downloads.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-${MONGODB_VERSION}.tgz"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${MONGODB_DIR}"
 
 # Allow users to opt out of starting MongoDB (ie: they just need the tools)
