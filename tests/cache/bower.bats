@@ -1,5 +1,14 @@
 #!/usr/bin/env bats
 
+setup() {
+  rm -rf "${HOME}/cache/*"
+	chmod u+x ./cache/bower.sh
+}
+
+teardown() {
+  rm -rf "./node_modules" "${HOME}/cache/*"
+}
+
 @test "Configure caching bower packages" {
   run "./cache/bower.sh"
   [ "$status" -eq 0 ]
@@ -9,7 +18,7 @@
 }
 
 @test "Check if bower is writing to the cache directory" {
-	run bash -c "rm -rf ${HOME}/cache/bower/* && npm install bower && bower install jquery"
+	run bash -c "npm install bower && bower install jquery"
 	[ "$status" -eq 0 ]
 	[ $(du -s ${HOME}/cache/bower | cut -f 1) -ne 0 ]
 	[[ $(bower cache list | grep jquery) =~ "jquery" ]]
