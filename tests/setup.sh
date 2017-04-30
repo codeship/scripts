@@ -10,8 +10,9 @@ if [ -f "${HOME}/cache/shellcheck" ]; then
 	cp  "${HOME}/cache/shellcheck" "${HOME}/bin/shellcheck"
 fi
 
-# clear the dependency cache
-rm -rf "${HOME}/cache"
-
 # install bats for running tests
 bash packages/bats.sh
+
+# clear the dependency cache
+rm -rf "${HOME}/cache"
+mkdir -p "${HOME}/cache/"
