@@ -4,9 +4,6 @@ setup() {
 	chmod u+x ./utilities/check_port.sh
 }
 
-teardown() {
-}
-
 @test "[check_port.sh] Check open port 3306" {
 	run "./utilities/check_port 3306"
 	[ "$status" -eq 0 ]

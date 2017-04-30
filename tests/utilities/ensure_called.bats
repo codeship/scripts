@@ -4,9 +4,6 @@ setup() {
 	chmod u+x ./utilities/ensure_called.sh
 }
 
-teardown() {
-}
-
 @test "[ensure_called.sh] Check with a single argument" {
 	run "./utilities/ensure_called.sh 'echo Hello World'"
 	[ "$status" -eq 0 ]

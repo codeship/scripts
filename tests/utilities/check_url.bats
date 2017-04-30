@@ -4,9 +4,6 @@ setup() {
 	chmod u+x ./utilities/check_url.sh
 }
 
-teardown() {
-}
-
 @test "[check_url.sh] Check valid URL https://codeship.com" {
 	run "./utilities/check_url.sh -w 2 -t 2 https://codeship.com"
 	[ "$status" -eq 0 ]
