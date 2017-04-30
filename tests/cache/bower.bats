@@ -10,7 +10,7 @@ teardown() {
 }
 
 @test "[bower.sh] Configure caching bower packages" {
-  run "./cache/bower.sh"
+  run ./cache/bower.sh
   [ "$status" -eq 0 ]
 	[ -f ${HOME}/.bowerrc ]
 	[[ $(cat ${HOME}/.bowerrc | grep packages) =~ "${HOME}/cache" ]]
