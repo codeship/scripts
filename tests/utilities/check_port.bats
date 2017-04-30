@@ -12,5 +12,5 @@ setup() {
 @test "[check_port.sh] Check closed port 80" {
 	run ./utilities/check_port.sh 80
 	[ "$status" -eq 1 ]
-	[ "$output" = "Service localhost:80 didn't become ready in time." ]
+	[[ "$output" =~ "Service localhost:80 didn't become ready in time." ]]
 }

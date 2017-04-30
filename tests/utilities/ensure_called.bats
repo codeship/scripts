@@ -25,7 +25,7 @@ setup() {
 
 @test "[ensure_called.sh] Check commands are not run after a failing command" {
 	run ./utilities/ensure_called.sh false 'echo Not Run' true
-	[ "$status" -eq 0 ]
-	[[ ! "$output" =~ "Not Run" ]]
+	[ "$status" -eq 1 ]
+	! [[ "$output" =~ "Not Run" ]]
 	[[ "$output" =~ "Running the exit handler" ]]
 }
