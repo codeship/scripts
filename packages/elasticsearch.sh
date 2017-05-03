@@ -13,7 +13,6 @@
 ELASTICSEARCH_VERSION=${ELASTICSEARCH_VERSION:="1.5.2"}
 ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
 ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
-ELASTICSEARCH_WAIT_TIME=${ELASTICSEARCH_WAIT_TIME:="30"}
 
 # The download location of version 5.x, and 2.x seems to follow a different URL structure to 1.x\
 # Make sure to use Oracle JDK 8 for Elasticsearch 5.x run the following commands in your script.
@@ -39,6 +38,6 @@ tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${ELASTICSEARCH_
 
 echo "http.port: ${ELASTICSEARCH_PORT}" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
 
-# Make sure to use the exact parameters you want for ElasticSearch and give it enough sleep time to properly start up
+# Make sure to use the exact parameters you want for ElasticSearch
 nohup bash -c "${ELASTICSEARCH_DIR}/bin/elasticsearch 2>&1" &
 wget --retry-connrefused --tries=0 --waitretry=1 -O- -nv http://localhost:${ELASTICSEARCH_PORT}
