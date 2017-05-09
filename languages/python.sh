@@ -24,7 +24,7 @@ if [ ! -d "${PYENV_ROOT}" ]; then
 fi
 
 # Pyenv itself uses PYENV_VERSION to choose the Python version
-PYENV_VERSION=
+unset PYENV_VERSION
 
 eval "$(pyenv init -)"
 pyenv install --skip-existing "${PYTHON_VERSION}"
