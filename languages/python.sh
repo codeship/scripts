@@ -1,6 +1,6 @@
 #!/bin/bash
 # Install a custom Python version.
-# based on pyenv, https://github.com/yyuu/pyenv
+# based on pyenv, https://github.com/pyenv/pyenv
 #
 # Add at least the following environment variables to your project configuration
 # (otherwise the defaults below will be used).
@@ -16,12 +16,15 @@ CACHED_DOWNLOAD="${HOME}/cache/pyenv-${PYENV_VERSION}.tar.gz"
 
 if [ ! -d "${PYENV_ROOT}" ]; then
   mkdir -p "${PYENV_ROOT}"
-  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/yyuu/pyenv/archive/${PYENV_VERSION}.tar.gz"
+  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/pyenv/pyenv/archive/${PYENV_VERSION}.tar.gz"
   tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${PYENV_ROOT}"
 
   export PYENV_ROOT
   export PATH="${PYENV_ROOT}/bin:${PATH}"
 fi
+
+# Pyenv itself uses PYENV_VERSION to choose the Python version
+PYENV_VERSION=
 
 eval "$(pyenv init -)"
 pyenv install --skip-existing "${PYTHON_VERSION}"
