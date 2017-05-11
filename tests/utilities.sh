@@ -23,3 +23,6 @@ bash utilities/ensure_called.sh true false "echo Hello World" | grep "Hello Worl
 # Test random_timezone
 source utilities/random_timezone.sh
 env | grep TZ
+
+# Run bats tests
+bats ./tests/utilities/

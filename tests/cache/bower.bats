@@ -9,15 +9,15 @@ teardown() {
   rm -rf "./node_modules" "${HOME}/cache/*"
 }
 
-@test "Configure caching bower packages" {
-  run "./cache/bower.sh"
+@test "[bower.sh] Configure caching bower packages" {
+  run ./cache/bower.sh
   [ "$status" -eq 0 ]
 	[ -f ${HOME}/.bowerrc ]
 	[[ $(cat ${HOME}/.bowerrc | grep packages) =~ "${HOME}/cache" ]]
 	[[ $(cat ${HOME}/.bowerrc | grep registry) =~ "${HOME}/cache" ]]
 }
 
-@test "Check if bower is writing to the cache directory" {
+@test "[bower.sh] Check if bower is writing to the cache directory" {
 	run bash -c "npm install bower && bower install jquery"
 	[ "$status" -eq 0 ]
 	[ $(du -s ${HOME}/cache/bower | cut -f 1) -ne 0 ]
