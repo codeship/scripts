@@ -69,6 +69,11 @@ export POPPLER_VERSION="0.52.0"
 bash packages/poppler.sh
 pdftotext -v 2>&1 | grep "${POPPLER_VERSION}"
 
+# QPDF
+export QPDF_VERSION="6.0.0"
+bash packages/qpdf.sh
+qpdf --version | grep "${QPDF_VERSION}"
+
 # sbt
 export SBT_VERSION="0.13.8"
 bash packages/sbt.sh
