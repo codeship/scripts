@@ -8,6 +8,11 @@
 #
 # Include in your builds via
 # source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/python.sh)"
+
+echo -e "\e[0;33mCodeship Basic now uses pyenv for Python support by default.\e[0m"
+echo -e "\e[0;33mThis script is no longer required for installing custom Python versions.\e[0m"
+echo -e "\e[0;33mPlease see https://blog.codeship.com/improved-python-version-management-and-caching-on-codeship-basic for more information.\e[0m"
+
 PYTHON_VERSION=${PYTHON_VERSION:="3.5.0"}
 PYENV_VERSION=${PYENV_VERSION:="v1.0.8"}
 
