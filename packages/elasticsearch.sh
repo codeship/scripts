@@ -45,7 +45,7 @@ echo "http.port: ${ELASTICSEARCH_PORT}" >> ${ELASTICSEARCH_DIR}/config/elasticse
 if [ "$ELASTICSEARCH_PLUGINS" ]
 then
   for i in $ELASTICSEARCH_PLUGINS ; do
-    $ELASTICSEARCH_PLUGIN_BIN "install ${i}"
+    eval "${ELASTICSEARCH_PLUGIN_BIN} install ${i}"
   done
 fi
 
