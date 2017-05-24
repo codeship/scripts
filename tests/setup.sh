@@ -29,7 +29,8 @@ info "Resetting the '${HOME}/cache' folder"
 rm -rf "${HOME}/cache"
 mkdir -p "${HOME}/cache/"
 
-# install ShellCheck if it's not already available.
+# install ShellCheck if it's not already available or copy the binary back to
+# the cache folder.
 # we have to run this after clearing the cache, as otherwise the built binary
 # won't be cached. we also have to make sure to not clear the complete cache
 # in any of the tests.
@@ -37,4 +38,6 @@ if [ ! -f "${HOME}/bin/shellcheck" ]; then
 	info "Installing ShellCheck"
 	bash packages/shellcheck.sh 1>/dev/null
 	shellcheck --version
+else
+	cp "${HOME}/bin/shellcheck" "${HOME}/cache/shellcheck"
 fi
