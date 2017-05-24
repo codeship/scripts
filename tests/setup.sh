@@ -1,8 +1,8 @@
 #!/bin/sh
 
-debug() { echo "\033[0;37m$*\033[0m"; }
-info() { echo "\033[0;36m$*\033[0m"; }
-error() { >&2  echo "\033[0;31m$*\033[0m"; }
+debug() { echo -e "\033[0;37m$*\033[0m"; }
+info() { echo -e "\033[0;36m$*\033[0m"; }
+error() { >&2  echo -e "\033[0;31m$*\033[0m"; }
 fail() { error ${1}; exit ${2:-1}; }
 
 set -euo pipefail
@@ -14,11 +14,13 @@ if [ -f "${HOME}/cache/shellcheck" ]; then
 	info "Using cached ShellCheck binary"
 	rm -rf "${HOME}/bin/shellcheck"
 	cp  "${HOME}/cache/shellcheck" "${HOME}/bin/shellcheck"
+	shellcheck --version
 fi
 
 # install bats for running tests
 info "Installing Bats"
-bash packages/bats.sh
+bash packages/bats.sh 1>/dev/null
+bats --version
 
 # clear the dependency cache
 # this code can be deleted once all tests have been converted to bats format
@@ -34,4 +36,5 @@ mkdir -p "${HOME}/cache/"
 if [ ! -f "${HOME}/bin/shellcheck" ]; then
 	info "Installing ShellCheck"
 	bash packages/shellcheck.sh 1>/dev/null
+	shellcheck --version
 fi
