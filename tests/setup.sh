@@ -19,7 +19,7 @@ fi
 
 # install bats for running tests
 info "Installing Bats"
-bash packages/bats.sh 1>/dev/null
+bash packages/bats.sh >/dev/null 2>&1
 bats --version
 
 # clear the dependency cache
@@ -36,7 +36,7 @@ mkdir -p "${HOME}/cache/"
 # in any of the tests.
 if [ ! -f "${HOME}/bin/shellcheck" ]; then
 	info "Installing ShellCheck"
-	bash packages/shellcheck.sh 1>/dev/null
+	bash packages/shellcheck.sh >/dev/null
 	shellcheck --version
 else
 	cp "${HOME}/bin/shellcheck" "${HOME}/cache/shellcheck"
