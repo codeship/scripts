@@ -1,28 +1,28 @@
 #!/bin/bash
 
+debug() { echo "\033[0;37m$*\033[0m"; }
+info() { echo "\033[0;36m$*\033[0m"; }
+error() { >&2  echo "\033[0;31m$*\033[0m"; }
+fail() { error ${1}; exit ${2:-1}; }
+
 set -euo pipefail
 
-if [ ! -e "${HOME}/bin/shellcheck" ]; then
-	echo "Installing ShellCheck"
-	bash packages/shellcheck.sh
-fi
-
-echo "Running ShellCheck..."
-echo "...on cache scripts"
+info "Running ShellCheck..."
+info "...on cache scripts"
 shellcheck cache/*
 
-echo "...on deployment scripts (PENDING)"
+info "...on deployment scripts (PENDING)"
 shellcheck deployments/* || true
 
-echo "...on language scripts"
+info "...on language scripts"
 shellcheck languages/*
 
-echo "...on notification scripts (PENDING)"
+info "...on notification scripts (PENDING)"
 shellcheck notifications/* || true
 
-echo "...on package scripts (PENDING)"
+info "...on package scripts (PENDING)"
 shellcheck packages/* || true
 
-echo "...on utility scripts (PENDING)"
+info "...on utility scripts (PENDING)"
 # Ignore SC1071: ShellCheck only supports sh/bash/ksh scripts
 shellcheck -e SC1071 utilities/* || true
