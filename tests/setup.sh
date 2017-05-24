@@ -14,5 +14,15 @@ fi
 bash packages/bats.sh
 
 # clear the dependency cache
+# this code can be deleted once all tests have been converted to bats format
+# and take care of clearing their downloaded artifacts themselves.
 rm -rf "${HOME}/cache"
 mkdir -p "${HOME}/cache/"
+
+# install ShellCheck if it's not already available.
+# we have to run this after clearing the cache, as otherwise the built binary
+# won't be cached. we also have to make sure to not clear the complete cache
+# in any of the tests.
+if [ ! -f "${HOME}/bin/shellcheck" ]; then
+	bash packages/shellcheck.sh
+fi
