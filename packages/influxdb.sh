@@ -19,7 +19,7 @@ set -e
 wget --continue --output-document "${CACHED_DOWNLOAD}" "${INFLUX_URL}"
 tar -xvf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${INFLUX_DIR}"
 
-bash -c "${INFLUX_DIR}/influxdb-1.2.2-1/usr/bin/influxd 2>&1>/dev/null" >/dev/null & disown
+bash -c "${INFLUX_DIR}/influxdb-1.2.2-1/usr/bin/influxd 2>&1 >/dev/null" >/dev/null & disown
 sleep "${INFLUX_WAIT_TIME}"
 
 if [ "$INFLUX_DB" != "" ]
