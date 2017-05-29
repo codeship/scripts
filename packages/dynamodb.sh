@@ -23,6 +23,6 @@ tar -xaf "${CACHED_DOWNLOAD}" --directory "${DYNAMODB_DIR}"
 # Make sure to use the exact parameters you want for DynamoDB and give it enough sleep time to properly start up
 (
   cd ${DYNAMODB_DIR} || exit 1
-  bash -c "java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory -port ${DYNAMODB_PORT} 2>&1 >dev/null" >/dev/null & disown
+  bash -c "java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory -port ${DYNAMODB_PORT} 2>&1 >/dev/null" >/dev/null & disown
   sleep "${DYNAMODB_WAIT_TIME}"
 )
