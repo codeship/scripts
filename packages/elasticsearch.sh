@@ -39,5 +39,5 @@ tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${ELASTICSEARCH_
 echo "http.port: ${ELASTICSEARCH_PORT}" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
 
 # Make sure to use the exact parameters you want for ElasticSearch
-nohup bash -c "${ELASTICSEARCH_DIR}/bin/elasticsearch 2>&1" &
+bash -c "${ELASTICSEARCH_DIR}/bin/elasticsearch 2>&1 >dev/null" >/dev/null & disown
 wget --retry-connrefused --tries=0 --waitretry=1 -O- -nv http://localhost:${ELASTICSEARCH_PORT}
