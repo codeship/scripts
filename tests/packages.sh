@@ -90,5 +90,7 @@ export TOMCAT_VERSION="8.5.12"
 bash packages/tomcat.sh
 bash ${HOME}/tomcat/bin/version.sh | grep "Apache Tomcat/${TOMCAT_VERSION}"
 
-# Run available bats tests for packages to make it easier to switch.
-bats ./tests/packages
+# MongoDB
+export MONGODB_VERSION="3.0.4"
+bash packages/mongodb.sh
+netstat -lnp | grep "27018.*mongod"
