@@ -45,6 +45,13 @@ identify -version | grep "${IMAGEMAGICK_VERSION}"
 export MONGODB_VERSION="3.4.0"
 bash packages/mongodb.sh
 netstat -lnp | grep "${MONGODB_PORT}.*mongod"
+kill "$(cat ${HOME}/mongodb/mongod.lock)"
+
+export MONGODB_VERSION="3.4.4"
+export MONGODB_STORAGE_ENGINE="MMAPv1"
+bash packages/mongodb.sh
+netstat -lnp | grep "${MONGODB_PORT}.*mongod"
+kill "$(cat ${HOME}/mongodb/mongod.lock)"
 
 # MySQL 5.7
 export MYSQL_VERSION="5.7.17"
