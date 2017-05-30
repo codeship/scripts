@@ -41,6 +41,11 @@ export IMAGEMAGICK_VERSION="7.0.5-0"
 bash packages/imagemagick.sh
 identify -version | grep "${IMAGEMAGICK_VERSION}"
 
+# MongoDB
+export MONGODB_VERSION="3.4.0"
+bash packages/mongodb.sh
+netstat -lnp | grep "${MONGODB_PORT}.*mongod"
+
 # MySQL 5.7
 export MYSQL_VERSION="5.7.17"
 bash packages/mysql-5.7.sh
@@ -89,8 +94,3 @@ stack --version | grep "${HASKELL_STACK_VERSION}"
 export TOMCAT_VERSION="8.5.12"
 bash packages/tomcat.sh
 bash ${HOME}/tomcat/bin/version.sh | grep "Apache Tomcat/${TOMCAT_VERSION}"
-
-# MongoDB
-export MONGODB_VERSION="3.0.4"
-bash packages/mongodb.sh
-netstat -lnp | grep "27018.*mongod"
