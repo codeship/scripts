@@ -1,12 +1,12 @@
 #!/usr/bin/env bats
 
 setup() {
-  rm -rf "${HOME}/cache/*"
+  rm -rf "${HOME}/cache/bower/*"
 	chmod u+x ./cache/bower.sh
 }
 
 teardown() {
-  rm -rf "./node_modules" "${HOME}/cache/*"
+  rm -rf "./node_modules" "${HOME}/cache/bower/*"
 }
 
 @test "[bower.sh] Configure caching bower packages" {
