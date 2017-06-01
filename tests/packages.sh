@@ -42,9 +42,20 @@ bash packages/imagemagick.sh
 identify -version | grep "${IMAGEMAGICK_VERSION}"
 
 # MongoDB
+export MONGODB_PORT="27018"
 export MONGODB_VERSION="3.4.0"
 bash packages/mongodb.sh
 netstat -lnp | grep "${MONGODB_PORT}.*mongod"
+kill "$(cat ${HOME}/mongodb/mongod.lock)"
+rm -rf "${HOME}/mongodb/"
+
+export MONGODB_PORT="27019"
+export MONGODB_VERSION="3.4.4"
+export MONGODB_STORAGE_ENGINE="mmapv1"
+bash packages/mongodb.sh
+netstat -lnp | grep "${MONGODB_PORT}.*mongod"
+kill "$(cat ${HOME}/mongodb/mongod.lock)"
+rm -rf "${HOME}/mongodb/"
 
 # MySQL 5.7
 export MYSQL_VERSION="5.7.17"

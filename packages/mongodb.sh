@@ -11,6 +11,7 @@
 MONGODB_VERSION=${MONGODB_VERSION:="3.0.4"}
 MONGODB_PORT=${MONGODB_PORT:="27018"}
 MONGODB_DIR=${MONGODB_DIR:="$HOME/mongodb"}
+MONGODB_STORAGE_ENGINE=${MONGODB_STORAGE_ENGINE:="wiredTiger"}
 MONGODB_WAIT_TIME=${MONGODB_WAIT_TIME:="10"}
 MONGODB_START=${MONGODB_START:="Y"}
 
@@ -24,7 +25,6 @@ tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${MONGODB_DIR}"
 # Allow users to opt out of starting MongoDB (ie: they just need the tools)
 if [ $MONGODB_START = "Y" ]; then
   # Make sure to use the exact parameters you want for MongoDB and give it enough sleep time to properly start up
-  bash -c "LC_ALL=C ${MONGODB_DIR}/bin/mongod --port ${MONGODB_PORT} --dbpath ${MONGODB_DIR} 2>&1 >/dev/null" >/dev/null & disown
+  bash -c "LC_ALL=C ${MONGODB_DIR}/bin/mongod --port ${MONGODB_PORT} --dbpath ${MONGODB_DIR} --storageEngine ${MONGODB_STORAGE_ENGINE} 2>&1 >/dev/null" >/dev/null & disown
   sleep "${MONGODB_WAIT_TIME}"
 fi
-
