@@ -13,7 +13,7 @@ test_header() {
 }
 
 #set -euo pipefail
-set -eo pipefail
+set -e
 
 PIPELINE_ID="${1}"
 
