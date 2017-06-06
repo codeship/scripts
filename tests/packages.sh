@@ -97,7 +97,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 fi
 
 # MySQL 5.7
-if [ ${PIPELINE_ID} -eq "2" ]; then
+if [ ${PIPELINE_ID} -eq "1" ]; then
 	test_header "MySQL"
 	export MYSQL_VERSION="5.7.17"
 	bash packages/mysql-5.7.sh
@@ -124,7 +124,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 fi
 
 # Poppler
-if [ ${PIPELINE_ID} -eq "2" ]; then
+if [ ${PIPELINE_ID} -eq "1" ]; then
 	test_header "Poppler"
 	export POPPLER_VERSION="0.52.0"
 	bash packages/poppler.sh
@@ -132,7 +132,7 @@ if [ ${PIPELINE_ID} -eq "2" ]; then
 fi
 
 # QPDF
-if [ ${PIPELINE_ID} -eq "2" ]; then
+if [ ${PIPELINE_ID} -eq "1" ]; then
 	test_header "QPDF"
 	export QPDF_VERSION="6.0.0"
 	bash packages/qpdf.sh
@@ -157,7 +157,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 fi
 
 # Haskell Stack
-if [ ${PIPELINE_ID} -eq "2" ]; then
+if [ ${PIPELINE_ID} -eq "1" ]; then
 	test_header "Haskell Stack"
 	export HASKELL_STACK_VERSION="1.3.2"
 	bash packages/stack.sh
