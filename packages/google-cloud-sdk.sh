@@ -5,9 +5,14 @@
 # command to your project's setup commands:
 # source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/google-cloud-sdk.sh)"
 #
-# Add the following environment variables to your project configuration
+# Add the following environment variables to your project configuration:
 # * GOOGLE_CLOUD_KEY
+#   * Set this variable to the contents of the "Service account key" JSON credentials file
+#     downloaded from "APIs & Services > Credentials" in the Google Cloud Platform console.
+#     You can safely copy-paste the entire contents of the file directly into the VALUE
+#     field when configuring this environment variable.
 # * GOOGLE_CLOUD_PROJECT_ID
+#   * Set this variable to the value of the `project_id` property found in the above JSON file.
 
 GOOGLE_CLOUD_DIR=${GOOGLE_CLOUD_DIR:=$HOME/google-cloud-sdk}
 CACHED_DOWNLOAD="${HOME}/cache/google-cloud-sdk.tar.gz"
