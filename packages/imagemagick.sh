@@ -9,7 +9,7 @@
 # (otherwise the default below will be used).
 # * IMAGEMAGICK_VERSION
 #
-IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:="7.0.5-0"}
+IMAGEMAGICK_VERSION=${IMAGEMAGICK_VERSION:="7.0.7-0"}
 IMAGEMAGICK_DIR=${IMAGEMAGICK_DIR:=$HOME/cache/imagemagick-$IMAGEMAGICK_VERSION}
 
 set -e
@@ -18,7 +18,7 @@ if [ ! -d "${IMAGEMAGICK_DIR}" ]; then
   CACHED_DOWNLOAD="${HOME}/cache/ImageMagick-${IMAGEMAGICK_VERSION}.tar.gz"
 
   mkdir -p "${HOME}/imagemagick"
-  wget --continue --output-document "${CACHED_DOWNLOAD}" "http://git.imagemagick.org/repos/ImageMagick/repository/archive.tar.gz?ref=${IMAGEMAGICK_VERSION}"
+  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/ImageMagick/ImageMagick/archive/${IMAGEMAGICK_VERSION}.tar.gz"
   tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${HOME}/imagemagick"
 
   (

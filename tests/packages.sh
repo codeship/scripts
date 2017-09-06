@@ -72,7 +72,7 @@ fi
 # ImageMagick
 if [ ${PIPELINE_ID} -eq "2" ]; then
 	test_header "ImageMagick"
-	export IMAGEMAGICK_VERSION="7.0.5-0"
+	export IMAGEMAGICK_VERSION="7.0.7-0"
 	bash packages/imagemagick.sh
 	identify -version | grep "${IMAGEMAGICK_VERSION}"
 fi
