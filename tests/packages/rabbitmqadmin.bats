@@ -11,6 +11,6 @@ teardown() {
 }
 
 @test "[rabbitmqadmin.sh] Installs successfully" {
-  run source /dev/stdin <<< "$(cat ./packages/rabbitmqadmin.sh)"
+  run ./packages/rabbitmqadmin.sh
   [ "$status" -eq 0 ]
 }
