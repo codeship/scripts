@@ -8,9 +8,9 @@
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/cockroachdb.sh | bash -s
-COCKROACHDB_VERSION=${DYNAMODB_VERSION:="latest"}
-COCKROACHDB_PORT=${DYNAMODB_PORT:="26257"}
-COCKROACHDB_DIR=${DYNAMODB_DIR:="$HOME/cockroackdb"}
+COCKROACHDB_VERSION=${COCKROACHDB_VERSION:="latest"}
+COCKROACHDB_PORT=${COCKROACHDB_PORT:="26257"}
+COCKROACHDB_DIR=${COCKROACHDB_DIR:="$HOME/cockroackdb"}
 
 set -e
 CACHED_DOWNLOAD="${HOME}/cache/cockroach-${COCKROACHDB_VERSION}.linux-amd64.tgz"
