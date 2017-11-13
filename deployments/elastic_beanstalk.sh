@@ -35,7 +35,7 @@ if [ -e config/database.yml ] && [ $(git ls-files --error-unmatch config/databas
 fi
 
 # create the archive and upload it to S3
-zip -x \*/.git\* -x .git\* -x \*.hg\* -r "${DEPLOYMENT_ARCHIVE:=${HOME}/${AWS_APP_VERSION}.zip}"
+zip -x \*/.git\* -x .git\* -x \*.hg\* -r "${DEPLOYMENT_ARCHIVE:=${HOME}/${AWS_APP_VERSION}.zip}" .
 aws s3 cp "${DEPLOYMENT_ARCHIVE}" "s3://${AWS_S3_BUCKET}/${AWS_APP_VERSION}.zip"
 
 # create the new version on ElasticBeanstalk
