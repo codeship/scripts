@@ -42,5 +42,5 @@ sed -i 's+/var/run/redis/redis-server.pid+/home/rof/redis/redis-server.pid+' "${
 sed -i 's+/var/log/redis/redis-server.log+/home/rof/redis/redis-server.log+' "${REDIS_CONF}"
 sed -i 's+/var/lib/redis+/home/rof/redis+' "${REDIS_CONF}"
 
-redis-server "${REDIS_CONF}" &
+bash -c "redis-server ${REDIS_CONF} 2>&1 >/dev/null" >/dev/null & disown
 redis-server --version
