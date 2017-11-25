@@ -22,5 +22,5 @@ wget --continue --output-document "${CACHED_DOWNLOAD}" "https://binaries.cockroa
 tar -xf "${CACHED_DOWNLOAD}" --directory "${COCKROACHDB_DIR}"
 
 ln -s "${COCKROACHDB_DIR}/cockroach-v${COCKROACHDB_VERSION}.linux-amd64/"* "${HOME}/bin"
-cockroach start --background --insecure --port ${COCKROACHDB_PORT}
+bash -c "cockroach start --background --insecure --port ${COCKROACHDB_PORT} 2>&1 >/dev/null" >/dev/null & disown
 cockroach version

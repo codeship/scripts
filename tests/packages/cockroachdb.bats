@@ -2,6 +2,7 @@
 
 setup() {
   export COCKROACHDB_VERSION="1.1.2"
+  export COCKROACHDB_PORT="26257"
 }
 
 @test "[cockroachdb.sh] Installs successfully" {
@@ -11,4 +12,11 @@ setup() {
   run cockroach version
   [ "$status" -eq 0 ]
   [[ "${lines[0]}" =~ "v${COCKROACHDB_VERSION}" ]]
+}
+
+@test "[cockroachdb.sh] Starts successfully" {
+  sleep 3
+  run bash -c "netstat -lnp | grep ${COCKROACHDB_PORT}"
+  [ "$status" -eq 0 ]
+  [[ "$output" =~ "cockroach" ]]
 }
