@@ -85,6 +85,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 	bash packages/mongodb.sh
 	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
 	kill "$(cat ${HOME}/mongodb/mongod.lock)"
+	sleep 5
 	rm -rf "${HOME}/mongodb/"
 
 	export MONGODB_PORT="27019"
@@ -93,6 +94,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 	bash packages/mongodb.sh
 	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
 	kill "$(cat ${HOME}/mongodb/mongod.lock)"
+	sleep 5
 	rm -rf "${HOME}/mongodb/"
 fi
 
