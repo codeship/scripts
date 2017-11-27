@@ -78,7 +78,7 @@ if [ ${PIPELINE_ID} -eq "2" ]; then
 fi
 
 # MongoDB
-if [ ${PIPELINE_ID} -eq "1" ]; then
+if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "MongoDB"
 	export MONGODB_PORT="27018"
 	export MONGODB_VERSION="3.4.0"
@@ -106,7 +106,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 fi
 
 # Neo4j
-if [ ${PIPELINE_ID} -eq "1" ]; then
+if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Neo4j"
 	export NEO4J_VERSION="2.2.2"
 	bash packages/neo4j.sh
@@ -115,7 +115,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 fi
 
 # Phalcon PHP framework
-if [ ${PIPELINE_ID} -eq "1" ]; then
+if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Phalcon"
 	export PHALCON_VERSION="3.0.3"
 	phpenv local 5.6
@@ -124,7 +124,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 fi
 
 # Poppler
-if [ ${PIPELINE_ID} -eq "1" ]; then
+if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Poppler"
 	export POPPLER_VERSION="0.52.0"
 	bash packages/poppler.sh
@@ -132,7 +132,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 fi
 
 # QPDF
-if [ ${PIPELINE_ID} -eq "1" ]; then
+if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "QPDF"
 	export QPDF_VERSION="6.0.0"
 	bash packages/qpdf.sh
@@ -157,7 +157,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 fi
 
 # Haskell Stack
-if [ ${PIPELINE_ID} -eq "1" ]; then
+if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Haskell Stack"
 	export HASKELL_STACK_VERSION="1.3.2"
 	bash packages/stack.sh
@@ -165,7 +165,7 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 fi
 
 # Tomcat
-if [ ${PIPELINE_ID} -eq "1" ]; then
+if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Tomcat"
 	export TOMCAT_VERSION="8.5.12"
 	bash packages/tomcat.sh
