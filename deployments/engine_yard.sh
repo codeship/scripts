@@ -2,7 +2,7 @@
 # Deploy to Engine Yard via their CLI, https://www.engineyard.com/
 #
 # Add the following environment variables to your project configuration.
-# * EY_API_TOKEN, e.g. "git@github.com:codeship/documentation.git"
+# * EY_API_TOKEN, e.g. "j4r82af4er9711a54d5a14c500783596cb35w20g"
 # * EY_ENVIRONMENT, (optional)
 # * EY_APP_URL, (optional, will be checked for a HTTP/2xx status code if provided
 #
