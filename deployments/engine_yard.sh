@@ -7,13 +7,13 @@
 # * EY_APP_URL, (optional, will be checked for a HTTP/2xx status code if provided
 #
 # Include in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/engine_yard.sh | bash -s
+# source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/engine_yard.sh)"
 EY_API_TOKEN=${EY_API_TOKEN:?'You need to configure the EY_API_TOKEN environment variable!'}
 
-set -e
-ENVIRONMENT_PARAMETER=${EY_ENVIRONMENT:+"-e $EY_ENVIRONMENT"}
+rvm use
+ENVIRONMENT_PARAMETER=${EY_ENVIRONMENT:+"--environment=$EY_ENVIRONMENT"}
 CHECK_URL_COMMAND=${EY_APP_URL:+"check_url $EY_APP_URL"}
 
 gem install engineyard --no-ri --no-rdoc
-ey deploy --api-token "${EY_API_TOKEN}" "${ENVIRONMENT_PARAMETER}"
+ey deploy --api-token="${EY_API_TOKEN}" -r "${CI_COMMIT_ID}" "${ENVIRONMENT_PARAMETER}"
 ${CHECK_URL_COMMAND}
