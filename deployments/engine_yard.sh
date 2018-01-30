@@ -8,12 +8,27 @@
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/engine_yard.sh | bash -s
-EY_API_TOKEN=${EY_API_TOKEN:?'You need to configure the EY_API_TOKEN environment variable!'}
 
 set -e
-ENVIRONMENT_PARAMETER=${EY_ENVIRONMENT:+"-e $EY_ENVIRONMENT"}
+
+# Load RVM into a shell session *as a function* -- https://rvm.io/workflow/scripting
+if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
+  # First try to load from a user install
+  source "$HOME/.rvm/scripts/rvm"
+elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
+  # Then try to load from a root install
+  source "/usr/local/rvm/scripts/rvm"
+else
+  printf "ERROR: An RVM installation was not found.\n"
+  false
+fi
+
+rvm use
+
+EY_API_TOKEN=${EY_API_TOKEN:?'You need to configure the EY_API_TOKEN environment variable!'}
+ENVIRONMENT_PARAMETER=${EY_ENVIRONMENT:+"--environment=$EY_ENVIRONMENT"}
 CHECK_URL_COMMAND=${EY_APP_URL:+"check_url $EY_APP_URL"}
 
 gem install engineyard --no-ri --no-rdoc
-ey deploy --api-token "${EY_API_TOKEN}" "${ENVIRONMENT_PARAMETER}"
+ey deploy --api-token="${EY_API_TOKEN}" -r "${CI_COMMIT_ID}" "${ENVIRONMENT_PARAMETER}"
 ${CHECK_URL_COMMAND}
