@@ -5,6 +5,7 @@ setup() {
 }
 
 @test "[geckodriver.sh] Installs successfully" {
+  skip "Skip until this is compatible with latest Rust version"
   rm -f "${HOME}/cache/geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz"
   rm -rf "${HOME}/cache/geckodriver-${GECKODRIVER_VERSION}"
   source languages/rust.sh
@@ -13,6 +14,7 @@ setup() {
 }
 
 @test "[geckodriver.sh] Verify installed version" {
+  skip "Skip until this is compatible with latest Rust version"
   run geckodriver --version
   [ "$status" -eq 0 ]
   [ "${lines[0]}" = "geckodriver ${GECKODRIVER_VERSION}" ]
