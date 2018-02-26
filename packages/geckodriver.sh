@@ -13,9 +13,9 @@ GECKODRIVER_VERSION=${GECKODRIVER_VERSION:="0.19.1"}
 
 set -e
 
-CACHED_DOWNLOAD="${HOME}/cache/geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz"
+CACHED_DOWNLOAD="${HOME}/cache/geckodriver-v${GECKODRIVER_VERSION}-linux64-precompiled.tar.gz"
 
-rm "${HOME}/bin/geckodriver"
+rm -rf "${HOME}/bin/geckodriver"
 wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/mozilla/geckodriver/releases/download/v${GECKODRIVER_VERSION}/geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz"
 tar -xaf "${CACHED_DOWNLOAD}" --directory "${HOME}/bin"
 
