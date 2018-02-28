@@ -5,7 +5,7 @@ setup() {
 }
 
 @test "[geckodriver.sh] Installs successfully" {
-  rm -f "${HOME}/cache/geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz"
+  rm -f "${HOME}/cache/geckodriver-v${GECKODRIVER_VERSION}-linux64-precompiled.tar.gz"
   run ./packages/geckodriver.sh
   [ "$status" -eq 0 ]
 }
