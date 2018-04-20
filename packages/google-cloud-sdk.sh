@@ -14,18 +14,15 @@
 # * GOOGLE_CLOUD_PROJECT_ID
 #   * Set this variable to the value of the `project_id` property found in the above JSON file.
 
+echo -e "\e[0;33mCodeship Basic now includes the gcloud CLI by default.\e[0m"
+echo -e "\e[0;33mPlease see https://documentation.codeship.com/basic/continuous-deployment/deployment-with-gcloudcli and\e[0m"
+echo -e "\e[0;33mhttps://documentation.codeship.com/basic/continuous-deployment/deployment-to-google-app-engine for more information.\e[0m"
+
 GOOGLE_CLOUD_DIR=${GOOGLE_CLOUD_DIR:=$HOME/google-cloud-sdk}
-CACHED_DOWNLOAD="${HOME}/cache/google-cloud-sdk.tar.gz"
 GOOGLE_CLOUD_KEYFILE="${GOOGLE_CLOUD_DIR}/google-cloud-key.json"
 
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
-export PATH="${GOOGLE_CLOUD_DIR}/bin:${PATH}"
 
-mkdir -p "${GOOGLE_CLOUD_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz"
-tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${GOOGLE_CLOUD_DIR}"
-
-"${GOOGLE_CLOUD_DIR}/install.sh" --usage-reporting=false --path-update=true --bash-completion=true --rc-path="${HOME}/.bashrc" --disable-installation-options
 gcloud --quiet components update
 gcloud --quiet config set component_manager/disable_update_check true
 
