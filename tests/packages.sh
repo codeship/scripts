@@ -100,8 +100,8 @@ fi
 
 # MySQL 5.7
 if [ ${PIPELINE_ID} -eq "1" ]; then
-	test_header "MySQL"
-	export MYSQL_VERSION="5.7.17"
+	test_header "MySQL 5.7"
+	export MYSQL_VERSION="5.7.22"
 	bash packages/mysql-5.7.sh
 	"$HOME/mysql-$MYSQL_VERSION/bin/mysql" --defaults-file="$HOME/mysql-$MYSQL_VERSION/my.cnf" --version | grep "${MYSQL_VERSION}"
 	netstat -lnp | grep "3307"
