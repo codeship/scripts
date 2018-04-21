@@ -13,12 +13,20 @@
 MYSQL_VERSION=${MYSQL_VERSION:="5.7.17"}
 MYSQL_PORT=${MYSQL_PORT:="3307"}
 
+# If the MySQL version is 5.7.18 or less
+if [ ${MYSQL_VERSION:4:2} -le 18 ]
+then
+  MYSQL_DL_URL="https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-${MYSQL_VERSION}-linux-glibc2.5-x86_64.tar.gz"
+else
+  MYSQL_DL_URL="https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-${MYSQL_VERSION}-linux-glibc2.12-x86_64.tar.gz"
+fi
+
 set -e
 MYSQL_DIR=${MYSQL_DIR:=$HOME/mysql-$MYSQL_VERSION}
-CACHED_DOWNLOAD="${HOME}/cache/mysql-${MYSQL_VERSION}-linux-glibc2.5-x86_64.tar.gz"
+CACHED_DOWNLOAD="${HOME}/cache/mysql-${MYSQL_VERSION}.tar.gz"
 
 mkdir -p "${MYSQL_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-${MYSQL_VERSION}-linux-glibc2.5-x86_64.tar.gz"
+wget --continue --output-document "${CACHED_DOWNLOAD}" "${MYSQL_DL_URL}"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${MYSQL_DIR}"
 mkdir -p "${MYSQL_DIR}/data"
 mkdir -p "${MYSQL_DIR}/socket"
