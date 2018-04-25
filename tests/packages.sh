@@ -107,6 +107,15 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 	netstat -lnp | grep "3307"
 fi
 
+# MySQL 8.0
+if [ ${PIPELINE_ID} -eq "1" ]; then
+        test_header "MySQL 8.0"
+        export MYSQL_VERSION="8.0.11"
+        bash packages/mysql-8.0.sh
+        "$HOME/mysql-$MYSQL_VERSION/bin/mysql" --defaults-file="$HOME/mysql-$MYSQL_VERSION/my.cnf" --version | grep "${MYSQL_VERSION}"
+        netstat -lnp | grep "3308"
+fi
+
 # Neo4j
 if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Neo4j"
