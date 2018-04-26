@@ -11,7 +11,7 @@
 # * AWS_APP_VERSION (defaults to "${AWS_APP_ENVIRONMENT}_${CI_COMMIT_ID:0:8}_YYYY-mm-dd_HHMMSS")
 #
 # Include in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/aws_elastic_beanstalk.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/elastic_beanstalk.sh | bash -s
 AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:?'You need to configure the AWS_ACCESS_KEY_ID environment variable!'}
 AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:?'You need to configure the AWS_SECRET_ACCESS_KEY environment variable!'}
 AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:?'You need to configure the AWS_DEFAULT_REGION environment variable!'}
