@@ -23,6 +23,7 @@ Most scripts include `set -e` to make the script fail as soon as a subcommand re
 
 This is fine if you call the script as documented above (via the `curl` command). But it will have side effects if you copy the commands into your settings on [codeship.com](https://codeship.com) as any command that fails after the `set -e`) will terminate your build. You'll get a `SYSTEM` build status, but no further error message or log output. You probably don't want this :)
 
+Please see the post at https://documentation.codeship.com/basic/builds-and-configuration/scripts/#set--e for more information on how `set -e` works and why this causes issues if you include it in your setup or test commands.
 
 ## Code of Conduct
 
