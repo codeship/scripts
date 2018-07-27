@@ -3,7 +3,7 @@
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/bats.sh | bash -s
-BATS_VERSION="1.0.2"
+BATS_VERSION="1.1.0"
 
 set -e
 CACHED_DOWNLOAD="${HOME}/cache/bats-core-${BATS_VERSION}.tar.gz"
