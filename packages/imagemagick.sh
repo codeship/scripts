@@ -18,7 +18,12 @@ if [ ! -d "${IMAGEMAGICK_DIR}" ]; then
   CACHED_DOWNLOAD="${HOME}/cache/ImageMagick-${IMAGEMAGICK_VERSION}.tar.gz"
 
   mkdir -p "${HOME}/imagemagick"
-  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/ImageMagick/ImageMagick/archive/${IMAGEMAGICK_VERSION}.tar.gz"
+  if  [[ ${IMAGEMAGICK_VERSION} == 6* ]];
+  then
+    wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/ImageMagick/ImageMagick6/archive/${IMAGEMAGICK_VERSION}.tar.gz"
+  else
+    wget --continue --output-document "${CACHED_DOWNLOAD}" "https://github.com/ImageMagick/ImageMagick/archive/${IMAGEMAGICK_VERSION}.tar.gz"
+  fi
   tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${HOME}/imagemagick"
 
   (
