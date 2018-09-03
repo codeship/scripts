@@ -69,10 +69,18 @@ if [ ${PIPELINE_ID} -eq "1" ]; then
 	gcloud --version
 fi
 
-# ImageMagick
+# ImageMagick 6
+if [ ${PIPELINE_ID} -eq "1" ]; then
+        test_header "ImageMagick 6"
+        export IMAGEMAGICK_VERSION="6.9.9-43"
+        bash packages/imagemagick.sh
+        identify -version | grep "${IMAGEMAGICK_VERSION}"
+fi
+
+# ImageMagick 7
 if [ ${PIPELINE_ID} -eq "2" ]; then
-	test_header "ImageMagick"
-	export IMAGEMAGICK_VERSION="7.0.7-0"
+	test_header "ImageMagick 7"
+	export IMAGEMAGICK_VERSION="7.0.8-11"
 	bash packages/imagemagick.sh
 	identify -version | grep "${IMAGEMAGICK_VERSION}"
 fi
