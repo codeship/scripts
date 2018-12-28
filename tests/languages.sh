@@ -38,17 +38,6 @@ export GO_VERSION="1.8"
 source languages/go.sh
 go version | grep "${GO_VERSION}"
 
-# Python 2.*
-# test_header "Python"
-# export PYTHON_VERSION="2.7.13"
-source languages/python.sh
-# python --version 2>&1 | grep "${PYTHON_VERSION}"
-
-# Python 3.*
-# export PYTHON_VERSION="3.6.0"
-# source languages/python.sh
-# python --version 2>&1 | grep "${PYTHON_VERSION}"
-
 # R
 test_header "R"
 export R_VERSION="3.3.2"
