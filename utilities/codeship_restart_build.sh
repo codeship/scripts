@@ -19,7 +19,7 @@
 # BUILD_RESTART_MACHINE_USER_PASSWORD
 
 # Include this script in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilities/codeship_restart_build.sh | ruby
+# if [ "$CI_BRANCH" != "$BUILD_RESTART_API_BRANCH" ]; $(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilities/codeship_restart_build.sh | ruby); fi
 
 require 'json'
 require 'net/http'
