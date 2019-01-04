@@ -19,7 +19,7 @@
 # CODESHIP_MACHINE_USER_PASSWORD
 
 # Include this script in your builds via
-# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilities/codeship_restart_build.sh | bash -s
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilities/codeship_restart_build.sh | ruby
 
 require 'json'
 require 'net/http'
