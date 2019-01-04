@@ -11,6 +11,16 @@
 
 # Here's our documentation for more information on managing teams -- https://documentation.codeship.com/general/account/organizations/#managing-teams-and-projects
 
+# The following environment variables must be present for the script to run successfully:
+# CODESHIP_ORG_NAME
+# CODESHIP_API_PROJECT_UUID
+# CODESHIP_API_BRANCH
+# CODESHIP_MACHINE_USER_EMAIL
+# CODESHIP_MACHINE_USER_PASSWORD
+
+# Include this script in your builds via
+# \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilities/codeship_restart_build.sh | bash -s
+
 require 'json'
 require 'net/http'
 
@@ -101,6 +111,4 @@ class CodeshipRestartBuild
   end
 end
 
-if $0 == __FILE__
-  CodeshipRestartBuild.restart_build
-end
+CodeshipRestartBuild.restart_build
