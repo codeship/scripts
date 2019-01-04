@@ -60,7 +60,7 @@ class CodeshipRestartBuild
     @project_uuid = ENV['BUILD_RESTART_API_PROJECT_UUID'] || abort("Please provide your project uuid as an environment variable: BUILD_RESTART_API_PROJECT_UUID=YOUR_BUILD_RESTART_API_PROJECT_UUID")
     @branch_name = ENV['BUILD_RESTART_API_BRANCH'] || abort("Please provide your branch name as an environment variable: BUILD_RESTART_API_BRANCH=YOUR_BUILD_RESTART_API_BRANCH")
     @machine_user_email = ENV['BUILD_RESTART_MACHINE_USER_EMAIL'] || abort("Please generate a new CodeShip user with limited permissions and provide email as environment variable: BUILD_RESTART_MACHINE_USER_EMAIL=YOUR_MACHINE_USER_EMAIL")
-    @machine_user_password = ENV['CODESHIP_MACHINE_USER_PASSWORD'] || abort("Please generate a new CodeShip user with limited permissions and provide password as environment variable: BUILD_RESTART_MACHINE_USER_PASSWORD=YOUR_MACHINE_USER_PASSWORD")
+    @machine_user_password = ENV['BUILD_RESTART_MACHINE_USER_PASSWORD'] || abort("Please generate a new CodeShip user with limited permissions and provide password as environment variable: BUILD_RESTART_MACHINE_USER_PASSWORD=YOUR_MACHINE_USER_PASSWORD")
     @started_session = start_session
     @access_token = @started_session[:token]
     @org_uuid = @started_session[:org_uuid]
