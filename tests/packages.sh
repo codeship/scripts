@@ -169,7 +169,7 @@ fi
 # Selenium Server
 if [ ${PIPELINE_ID} -eq "1" ]; then
 	test_header "Selenium"
-	export SELENIUM_VERSION="2.46.0"
+	export SELENIUM_VERSION="3.14.0"
 	export SELENIUM_PORT="4444"
 	bash packages/selenium_server.sh
 	netstat -lnp | grep "${SELENIUM_PORT}.*java"
