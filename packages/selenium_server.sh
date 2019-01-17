@@ -8,7 +8,7 @@
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/selenium_server.sh | bash -s
-SELENIUM_VERSION=${SELENIUM_VERSION:="2.46.0"}
+SELENIUM_VERSION=${SELENIUM_VERSION:="3.14.0"}
 SELENIUM_PORT=${SELENIUM_PORT:="4444"}
 SELENIUM_OPTIONS=${SELENIUM_OPTIONS:=""}
 SELENIUM_WAIT_TIME=${SELENIUM_WAIT_TIME:="10"}
