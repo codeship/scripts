@@ -11,6 +11,16 @@
 
 # Here's our documentation for more information on managing teams -- https://documentation.codeship.com/general/account/organizations/#managing-teams-and-projects
 
+# The following environment variables must be present for the script to run successfully:
+# BUILD_RESTART_ORG_NAME
+# BUILD_RESTART_API_PROJECT_UUID
+# BUILD_RESTART_API_BRANCH
+# BUILD_RESTART_MACHINE_USER_EMAIL
+# BUILD_RESTART_MACHINE_USER_PASSWORD
+
+# Include this script in your builds via
+# if [ "$CI_BRANCH" != "$BUILD_RESTART_API_BRANCH" ]; $(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/utilities/codeship_restart_build.sh | ruby); fi
+
 require 'json'
 require 'net/http'
 
@@ -46,11 +56,11 @@ class CodeshipRestartBuild
   attr_reader :access_token, :org_uuid, :project_uuid, :branch_name
 
   def initialize
-    @org_name = ENV['CODESHIP_ORG_NAME'] || abort("Please provide your CodeShip org name as an environment variable: CODESHIP_ORG_NAME=YOUR_CODESHIP_ORG_NAME")
-    @project_uuid = ENV['CODESHIP_API_PROJECT_UUID'] || abort("Please provide your project uuid as an environment variable: CODESHIP_API_PROJECT_UUID=YOUR_CODESHIP_API_PROJECT_UUID")
-    @branch_name = ENV['CODESHIP_API_BRANCH'] || abort("Please provide your branch name as an environment variable: CODESHIP_API_BRANCH=YOUR_CODESHIP_API_BRANCH")
-    @machine_user_email = ENV['CODESHIP_MACHINE_USER_EMAIL'] || abort("Please generate a new CodeShip user with limited permissions and provide email as environment variable: CODESHIP_MACHINE_USER_EMAIL=YOUR_MACHINE_USER_EMAIL")
-    @machine_user_password = ENV['CODESHIP_MACHINE_USER_PASSWORD'] || abort("Please generate a new CodeShip user with limited permissions and provide password as environment variable: CODESHIP_MACHINE_USER_PASSWORD=YOUR_MACHINE_USER_PASSWORD")
+    @org_name = ENV['BUILD_RESTART_ORG_NAME'] || abort("Please provide your CodeShip org name as an environment variable: BUILD_RESTART_ORG_NAME=YOUR_BUILD_RESTART_ORG_NAME")
+    @project_uuid = ENV['BUILD_RESTART_API_PROJECT_UUID'] || abort("Please provide your project uuid as an environment variable: BUILD_RESTART_API_PROJECT_UUID=YOUR_BUILD_RESTART_API_PROJECT_UUID")
+    @branch_name = ENV['BUILD_RESTART_API_BRANCH'] || abort("Please provide your branch name as an environment variable: BUILD_RESTART_API_BRANCH=YOUR_BUILD_RESTART_API_BRANCH")
+    @machine_user_email = ENV['BUILD_RESTART_MACHINE_USER_EMAIL'] || abort("Please generate a new CodeShip user with limited permissions and provide email as environment variable: BUILD_RESTART_MACHINE_USER_EMAIL=YOUR_MACHINE_USER_EMAIL")
+    @machine_user_password = ENV['BUILD_RESTART_MACHINE_USER_PASSWORD'] || abort("Please generate a new CodeShip user with limited permissions and provide password as environment variable: BUILD_RESTART_MACHINE_USER_PASSWORD=YOUR_MACHINE_USER_PASSWORD")
     @started_session = start_session
     @access_token = @started_session[:token]
     @org_uuid = @started_session[:org_uuid]
@@ -101,6 +111,4 @@ class CodeshipRestartBuild
   end
 end
 
-if $0 == __FILE__
-  CodeshipRestartBuild.restart_build
-end
+CodeshipRestartBuild.restart_build
