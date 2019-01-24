@@ -7,7 +7,7 @@
 #
 # Include in your builds via
 # source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/r.sh)"
-R_VERSION=${R_VERSION:="3.3.0"}
+R_VERSION=${R_VERSION:="3.5.2"}
 R_PATH=${R_PATH:=$HOME/r}
 
 CACHED_DOWNLOAD="${HOME}/cache/R-${R_VERSION}.tar.gz"
