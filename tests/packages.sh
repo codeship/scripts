@@ -151,7 +151,7 @@ fi
 # QPDF
 if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "QPDF"
-	export QPDF_VERSION="6.0.0"
+	export QPDF_VERSION="8.3.0"
 	bash packages/qpdf.sh
 	qpdf --version | grep "${QPDF_VERSION}"
 fi
