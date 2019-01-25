@@ -3,7 +3,7 @@
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/phalcon.sh | bash -s
-PHALCON_VERSION=${PHALCON_VERSION:="3.0.3"}
+PHALCON_VERSION=${PHALCON_VERSION:="3.4.2"}
 
 set -e
 CWD=$(pwd)

@@ -135,8 +135,7 @@ fi
 # Phalcon PHP framework
 if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Phalcon"
-	export PHALCON_VERSION="3.0.3"
-	phpenv local 5.6
+	export PHALCON_VERSION="3.4.2"
 	bash packages/phalcon.sh
 	php -m | grep phalcon
 fi
