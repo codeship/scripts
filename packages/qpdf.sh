@@ -23,8 +23,7 @@ if [ ! -d "${QPDF_DIR}" ]; then
 
   (
     cd "${HOME}/qpdf" || exit 1
-    ./autogen.sh
-    ./configure --prefix="${QPDF_DIR}" --enable-doc-maintenance
+    ./configure --prefix="${QPDF_DIR}"
     make
     make install
   )
