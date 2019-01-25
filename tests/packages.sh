@@ -36,7 +36,7 @@ fi
 # Ghostscript
 if [ ${PIPELINE_ID} -eq "2" ]; then
 	test_header "Ghostscript"
-	export GHOSTSCRIPT_VERSION="9.20"
+	export GHOSTSCRIPT_VERSION="9.26"
 	bash packages/ghostscript.sh
 	ghostscript -version | grep "${GHOSTSCRIPT_VERSION}"
 fi
