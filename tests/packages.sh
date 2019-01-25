@@ -129,8 +129,7 @@ if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Neo4j"
 	export NEO4J_VERSION="3.5.2"
 	bash packages/neo4j.sh
-	netstat -lnp | grep "7473.*java"
-	netstat -lnp | grep "7474.*java"
+	${HOME}/neo4j/bin/neo4j status
 fi
 
 # Phalcon PHP framework
