@@ -42,5 +42,16 @@ sed -i 's+/var/run/redis/redis-server.pid+/home/rof/redis/redis-server.pid+' "${
 sed -i 's+/var/log/redis/redis-server.log+/home/rof/redis/redis-server.log+' "${REDIS_CONF}"
 sed -i 's+/var/lib/redis+/home/rof/redis+' "${REDIS_CONF}"
 
+# Remove configuration items Redis 3 doesn't recognize
+if [ ${REDIS_VERSION:0:1} -eq 3 ]
+then
+  sed -i '/always-show-logo yes/d' "${REDIS_CONF}"
+  sed -i '/lazyfree-lazy-eviction no/d' "${REDIS_CONF}"
+  sed -i '/lazyfree-lazy-expire no/d' "${REDIS_CONF}"
+  sed -i '/lazyfree-lazy-server-del no/d' "${REDIS_CONF}"
+  sed -i '/slave-lazy-flush no/d' "${REDIS_CONF}"
+  sed -i '/aof-use-rdb-preamble no/d' "${REDIS_CONF}"
+fi
+
 bash -c "redis-server ${REDIS_CONF} 2>&1 >/dev/null" >/dev/null & disown
 redis-server --version
