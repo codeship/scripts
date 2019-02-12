@@ -18,7 +18,7 @@ REDIS_DIR=${REDIS_DIR:=$HOME/cache/redis-$REDIS_VERSION}
 set -e
 
 # Stop the default Redis instance
-redis-cli shutdown
+sudo /etc/init.d/redis-server stop
 
 if [ ! -d "${REDIS_DIR}" ]; then
   CACHED_DOWNLOAD="${HOME}/cache/redis-${REDIS_VERSION}.tar.gz"
@@ -36,7 +36,7 @@ fi
 
 ln -s "${REDIS_DIR}/bin/"* "${HOME}/bin"
 mkdir -p "${HOME}/redis"
-cp /etc/redis/redis.conf "${HOME}/redis"
+sudo cp /etc/redis/redis.conf "${HOME}/redis"
 
 sed -i 's+/var/run/redis/redis-server.pid+/home/rof/redis/redis-server.pid+' "${REDIS_CONF}"
 sed -i 's+/var/log/redis/redis-server.log+/home/rof/redis/redis-server.log+' "${REDIS_CONF}"
