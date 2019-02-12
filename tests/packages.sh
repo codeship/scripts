@@ -20,7 +20,7 @@ PIPELINE_ID="${1}"
 # ChromeDriver
 if [ ${PIPELINE_ID} -eq "1" ]; then
 	test_header "ChromeDriver"
-	export CHROMEDRIVER_VERSION="2.27"
+	export CHROMEDRIVER_VERSION="2.46"
 	bash packages/chromedriver.sh
 	chromedriver --version | grep "${CHROMEDRIVER_VERSION}"
 fi
