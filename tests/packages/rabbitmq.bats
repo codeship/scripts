@@ -15,15 +15,18 @@ cleanup() {
 }
 
 @test "[rabbitmq.sh] Script runs" {
+  skip
   source ./languages/erlang.sh
   ./packages/rabbitmq.sh
 }
 
 @test "[rabbitmq.sh] Download cached" {
+  skip
   [ -f "${HOME}/cache/rabbitmq-${RABBITMQ_VERSION}.tar.xz" ]
 }
 
 @test "[rabbitmq.sh] Verify version and service is running" {
+  skip
   source ./languages/erlang.sh
   run rabbitmqctl status
   [[ "$output" =~ "{rabbit,\"RabbitMQ\",\"${RABBITMQ_VERSION}\"}" ]]
