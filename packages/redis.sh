@@ -10,7 +10,7 @@
 # * REDIS_VERSION
 # * REDIS_PORT
 #
-REDIS_VERSION=${REDIS_VERSION:="4.0.2"}
+REDIS_VERSION=${REDIS_VERSION:="4.0.12"}
 REDIS_PORT=${REDIS_PORT:="6379"}
 REDIS_CONF=${REDIS_CONF:=$HOME/redis/redis.conf}
 REDIS_DIR=${REDIS_DIR:=$HOME/cache/redis-$REDIS_VERSION}
@@ -18,7 +18,7 @@ REDIS_DIR=${REDIS_DIR:=$HOME/cache/redis-$REDIS_VERSION}
 set -e
 
 # Stop the default Redis instance
-redis-cli shutdown
+sudo /etc/init.d/redis-server stop
 
 if [ ! -d "${REDIS_DIR}" ]; then
   CACHED_DOWNLOAD="${HOME}/cache/redis-${REDIS_VERSION}.tar.gz"
@@ -36,11 +36,22 @@ fi
 
 ln -s "${REDIS_DIR}/bin/"* "${HOME}/bin"
 mkdir -p "${HOME}/redis"
-cp /etc/redis/redis.conf "${HOME}/redis"
+sudo cp /etc/redis/redis.conf "${HOME}/redis"
 
 sed -i 's+/var/run/redis/redis-server.pid+/home/rof/redis/redis-server.pid+' "${REDIS_CONF}"
 sed -i 's+/var/log/redis/redis-server.log+/home/rof/redis/redis-server.log+' "${REDIS_CONF}"
 sed -i 's+/var/lib/redis+/home/rof/redis+' "${REDIS_CONF}"
+
+# Remove configuration items Redis 3 doesn't recognize
+if [ ${REDIS_VERSION:0:1} -eq 3 ]
+then
+  sed -i '/always-show-logo yes/d' "${REDIS_CONF}"
+  sed -i '/lazyfree-lazy-eviction no/d' "${REDIS_CONF}"
+  sed -i '/lazyfree-lazy-expire no/d' "${REDIS_CONF}"
+  sed -i '/lazyfree-lazy-server-del no/d' "${REDIS_CONF}"
+  sed -i '/slave-lazy-flush no/d' "${REDIS_CONF}"
+  sed -i '/aof-use-rdb-preamble no/d' "${REDIS_CONF}"
+fi
 
 bash -c "redis-server ${REDIS_CONF} 2>&1 >/dev/null" >/dev/null & disown
 redis-server --version

@@ -40,7 +40,7 @@ go version | grep "${GO_VERSION}"
 
 # R
 test_header "R"
-export R_VERSION="3.3.2"
+export R_VERSION="3.5.2"
 source languages/r.sh
 R --version | grep "${R_VERSION}"
 

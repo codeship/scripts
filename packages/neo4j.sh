@@ -7,7 +7,7 @@
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/neo4j.sh | bash -s
-NEO4J_VERSION=${NEO4J_VERSION:="2.2.2"}
+NEO4J_VERSION=${NEO4J_VERSION:="3.5.2"}
 NEO4J_DIR=${NEO4J_DIR:="$HOME/neo4j"}
 
 set -e

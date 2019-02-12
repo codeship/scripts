@@ -20,7 +20,7 @@ PIPELINE_ID="${1}"
 # ChromeDriver
 if [ ${PIPELINE_ID} -eq "1" ]; then
 	test_header "ChromeDriver"
-	export CHROMEDRIVER_VERSION="2.27"
+	export CHROMEDRIVER_VERSION="2.46"
 	bash packages/chromedriver.sh
 	chromedriver --version | grep "${CHROMEDRIVER_VERSION}"
 fi
@@ -36,7 +36,7 @@ fi
 # Ghostscript
 if [ ${PIPELINE_ID} -eq "2" ]; then
 	test_header "Ghostscript"
-	export GHOSTSCRIPT_VERSION="9.20"
+	export GHOSTSCRIPT_VERSION="9.26"
 	bash packages/ghostscript.sh
 	ghostscript -version | grep "${GHOSTSCRIPT_VERSION}"
 fi
@@ -127,17 +127,15 @@ fi
 # Neo4j
 if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Neo4j"
-	export NEO4J_VERSION="2.2.2"
+	export NEO4J_VERSION="3.5.2"
 	bash packages/neo4j.sh
-	netstat -lnp | grep "7473.*java"
-	netstat -lnp | grep "7474.*java"
+	${HOME}/neo4j/bin/neo4j status
 fi
 
 # Phalcon PHP framework
 if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "Phalcon"
-	export PHALCON_VERSION="3.0.3"
-	phpenv local 5.6
+	export PHALCON_VERSION="3.4.2"
 	bash packages/phalcon.sh
 	php -m | grep phalcon
 fi
@@ -153,7 +151,7 @@ fi
 # QPDF
 if [ ${PIPELINE_ID} -eq "3" ]; then
 	test_header "QPDF"
-	export QPDF_VERSION="6.0.0"
+	export QPDF_VERSION="8.3.0"
 	bash packages/qpdf.sh
 	qpdf --version | grep "${QPDF_VERSION}"
 fi

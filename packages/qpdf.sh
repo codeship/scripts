@@ -9,7 +9,7 @@
 # (otherwise the default below will be used).
 # * QPDF_VERSION
 #
-QPDF_VERSION=${QPDF_VERSION:="6.0.0"}
+QPDF_VERSION=${QPDF_VERSION:="8.3.0"}
 QPDF_DIR=${QPDF_DIR:=$HOME/cache/qpdf-$QPDF_VERSION}
 
 set -e
@@ -23,8 +23,7 @@ if [ ! -d "${QPDF_DIR}" ]; then
 
   (
     cd "${HOME}/qpdf" || exit 1
-    ./autogen.sh
-    ./configure --prefix="${QPDF_DIR}" --enable-doc-maintenance
+    ./configure --prefix="${QPDF_DIR}"
     make
     make install
   )
