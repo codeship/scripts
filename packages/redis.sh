@@ -37,6 +37,7 @@ fi
 ln -s "${REDIS_DIR}/bin/"* "${HOME}/bin"
 mkdir -p "${HOME}/redis"
 sudo cp /etc/redis/redis.conf "${HOME}/redis"
+sudo chown rof:rof "${REDIS_CONF}"
 
 sed -i 's+/var/run/redis/redis-server.pid+/home/rof/redis/redis-server.pid+' "${REDIS_CONF}"
 sed -i 's+/var/log/redis/redis-server.log+/home/rof/redis/redis-server.log+' "${REDIS_CONF}"
