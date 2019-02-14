@@ -18,7 +18,7 @@ if [ ! -d "${POPPLER_DIR}" ]; then
   CACHED_DOWNLOAD="${HOME}/cache/poppler-${POPPLER_VERSION}.tar.xz"
 
   mkdir -p "${HOME}/poppler"
-  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://poppler.freedesktop.org/poppler-${POPPLER_VERSION}.tar.xz"
+  curl "https://poppler.freedesktop.org/poppler-${POPPLER_VERSION}.tar.xz" --create-dirs -o "${CACHED_DOWNLOAD}"
   tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${HOME}/poppler"
 
   (
