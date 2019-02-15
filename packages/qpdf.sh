@@ -23,7 +23,14 @@ if [ ! -d "${QPDF_DIR}" ]; then
 
   (
     cd "${HOME}/qpdf" || exit 1
-    ./configure --prefix="${QPDF_DIR}"
+
+    if [[ $(echo $QPDF_VERSION | awk -F '.' '{ print $1 }') -gt "7" ]]; then
+      ./configure --prefix="${QPDF_DIR}"
+    else
+      ./autogen.sh
+      ./configure --prefix="${QPDF_DIR}" --enable-doc-maintenance
+    fi
+
     make
     make install
   )
