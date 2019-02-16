@@ -18,7 +18,7 @@ if [ ! -d "${MAVEN_DIR}" ]; then
   CACHED_DOWNLOAD="${HOME}/cache/apache-maven-${MAVEN_VERSION}.tar.gz"
 
   mkdir -p "${MAVEN_DIR}"
-  wget --continue --output-document "${CACHED_DOWNLOAD}" "http://apache.mesi.com.ar/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
+  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://www-eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
   tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${MAVEN_DIR}"
 fi
 

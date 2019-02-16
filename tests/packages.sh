@@ -188,3 +188,11 @@ if [ ${PIPELINE_ID} -eq "3" ]; then
 	bash packages/tomcat.sh
 	bash ${HOME}/tomcat/bin/version.sh | grep "Apache Tomcat/${TOMCAT_VERSION}"
 fi
+
+# Maven
+if [ ${PIPELINE_ID} -eq "3" ]; then
+        test_header "Maven"
+        export MAVEN_VERSION="3.6.0"
+        bash packages/maven.sh
+        mvn -v | grep "${MAVEN_VERSION}"
+fi
