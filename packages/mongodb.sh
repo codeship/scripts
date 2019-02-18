@@ -14,12 +14,20 @@ MONGODB_DIR=${MONGODB_DIR:="$HOME/mongodb"}
 MONGODB_STORAGE_ENGINE=${MONGODB_STORAGE_ENGINE:="wiredTiger"}
 MONGODB_WAIT_TIME=${MONGODB_WAIT_TIME:="10"}
 MONGODB_START=${MONGODB_START:="Y"}
+UBUNTU_VERSION="$(lsb_release -r -s)"
 
 set -e
-CACHED_DOWNLOAD="${HOME}/cache/mongodb-linux-x86_64-ubuntu1404-${MONGODB_VERSION}.tgz"
+CACHED_DOWNLOAD="${HOME}/cache/mongodb-linux-x86_64-${MONGODB_VERSION}.tgz"
 
 mkdir -p "${MONGODB_DIR}"
+
+if [ ${UBUNTU_VERSION:0:2} -eq 18 ] && [ ${MONGODB_VERSION:0:1} -eq 4 ]
+then
+wget --continue --output-document "${CACHED_DOWNLOAD}" "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1804-${MONGODB_VERSION}.tgz"
+else
 wget --continue --output-document "${CACHED_DOWNLOAD}" "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-${MONGODB_VERSION}.tgz"
+fi
+
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${MONGODB_DIR}"
 
 # Allow users to opt out of starting MongoDB (ie: they just need the tools)

@@ -87,18 +87,36 @@ fi
 
 # MongoDB
 if [ ${PIPELINE_ID} -eq "3" ]; then
-	test_header "MongoDB"
+	test_header "MongoDB 3.4"
 	export MONGODB_PORT="27018"
-	export MONGODB_VERSION="3.4.0"
+	export MONGODB_VERSION="3.4.19"
 	bash packages/mongodb.sh
 	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
 	kill "$(cat ${HOME}/mongodb/mongod.lock)"
 	sleep 5
 	rm -rf "${HOME}/mongodb/"
 
-	export MONGODB_PORT="27019"
-	export MONGODB_VERSION="3.4.4"
+	export MONGODB_PORT="27018"
+	export MONGODB_VERSION="3.4.19"
 	export MONGODB_STORAGE_ENGINE="mmapv1"
+	bash packages/mongodb.sh
+	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
+	kill "$(cat ${HOME}/mongodb/mongod.lock)"
+	sleep 5
+	rm -rf "${HOME}/mongodb/"
+
+	test_header "MongoDB 3.6"
+	export MONGODB_PORT="27018"
+	export MONGODB_VERSION="3.6.10"
+	bash packages/mongodb.sh
+	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
+	kill "$(cat ${HOME}/mongodb/mongod.lock)"
+	sleep 5
+	rm -rf "${HOME}/mongodb/"
+
+	test_header "MongoDB 4.0"
+	export MONGODB_PORT="27018"
+	export MONGODB_VERSION="4.0.6"
 	bash packages/mongodb.sh
 	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
 	kill "$(cat ${HOME}/mongodb/mongod.lock)"
