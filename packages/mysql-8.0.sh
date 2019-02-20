@@ -50,6 +50,7 @@ datadir		= ${MYSQL_DIR}/data/mysql
 tmpdir		= /tmp
 lc-messages-dir	= ${MYSQL_DIR}/share/english
 skip-external-locking
+default_authentication_plugin=mysql_native_password
 
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
