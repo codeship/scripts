@@ -15,10 +15,14 @@ MYSQL_PORT=${MYSQL_PORT:="3308"}
 
 set -e
 MYSQL_DIR=${MYSQL_DIR:=$HOME/mysql-$MYSQL_VERSION}
-CACHED_DOWNLOAD="${HOME}/cache/mysql-${MYSQL_VERSION}-linux-glibc2.12-x86_64.tar.gz"
+DOWNLOAD_FILE_EXTENSION="tar.gz"
+if [ "${MYSQL_VERSION:4}" -ge 12 ]; then
+        DOWNLOAD_FILE_EXTENSION="tar.xz"
+fi
+CACHED_DOWNLOAD="${HOME}/cache/mysql-${MYSQL_VERSION}-linux-glibc2.12-x86_64.${DOWNLOAD_FILE_EXTENSION}"
 
 mkdir -p "${MYSQL_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-${MYSQL_VERSION}-linux-glibc2.12-x86_64.tar.gz"
+wget --continue --output-document "${CACHED_DOWNLOAD}" "https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-${MYSQL_VERSION}-linux-glibc2.12-x86_64.${DOWNLOAD_FILE_EXTENSION}"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${MYSQL_DIR}"
 mkdir -p "${MYSQL_DIR}/data"
 mkdir -p "${MYSQL_DIR}/socket"
