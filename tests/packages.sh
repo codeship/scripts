@@ -51,15 +51,17 @@ fi
 
 # Git LFS
 if [ ${PIPELINE_ID} -eq "1" ]; then
-	test_header "Git LFS"
-	export GIT_LFS_VERSION="2.0.0"
+	test_header "Git LFS 2"
+	export GIT_LFS_VERSION="2.7.0"
 	bash packages/git-lfs.sh
 	git lfs version | grep "git-lfs/${GIT_LFS_VERSION}"
-
-	# test warning message
+	rm -rf "${HOME}/git-lfs"
 	unset GIT_LFS_VERSION
-	bash packages/git-lfs.sh | grep "Warning"
-	git lfs version | grep "git-lfs/1.5.6"
+
+	test_header "Git LFS 1"
+	export GIT_LFS_VERSION="1.5.6"
+	bash packages/git-lfs.sh
+	git lfs version | grep "git-lfs/${GIT_LFS_VERSION}"
 fi
 
 # Google Cloud SDK
