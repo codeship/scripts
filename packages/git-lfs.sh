@@ -9,7 +9,7 @@
 # (otherwise the default below will be used).
 # * GIT_LFS_VERSION
 #
-GIT_LFS_VERSION=${GIT_LFS_VERSION:="1.5.6"}
+GIT_LFS_VERSION=${GIT_LFS_VERSION:="2.7.0"}
 GIT_LFS_DIR=${GIT_LFS_DIR:="$HOME/git-lfs"}
 REPO_DIR=$(readlink -f "${HOME}/clone")
 DOWNLOAD_URL_PREFIX="git-lfs-linux-amd64-"
