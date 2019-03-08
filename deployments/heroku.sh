@@ -63,6 +63,9 @@ echo "DEPLOYMENT: $deployment_id"
 
 output_stream_url=`echo "$deployment" | jq -r .output_stream_url`
 
+# Sleep to allow the output stream to become available
+sleep $AFTER_DEPLOYMENT_WAIT_TIME
+
 curl -sS "$output_stream_url"
 
 # Sleep to allow Heroku to store the result of the deployment
