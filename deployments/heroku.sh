@@ -16,7 +16,7 @@ HEROKU_APP_NAME=${1:?'You need to provide your Heroku app name.'}
 HEROKU_API_KEY=${HEROKU_API_KEY:?'Set the HEROKU_API_KEY environment variable. Get the key from https://dashboard.heroku.com/account'}
 
 APPLICATION_FOLDER=$HOME/clone
-AFTER_DEPLOYMENT_WAIT_TIME=5
+AFTER_DEPLOYMENT_WAIT_TIME=${AFTER_DEPLOYMENT_WAIT_TIME:="10"}
 
 echo "STARTING DEPLOYMENT"
 
