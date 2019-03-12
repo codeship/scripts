@@ -15,8 +15,8 @@
 HEROKU_APP_NAME=${1:?'You need to provide your Heroku app name.'}
 HEROKU_API_KEY=${HEROKU_API_KEY:?'Set the HEROKU_API_KEY environment variable. Get the key from https://dashboard.heroku.com/account'}
 
-APPLICATION_FOLDER=$HOME/clone
-AFTER_DEPLOYMENT_WAIT_TIME=${AFTER_DEPLOYMENT_WAIT_TIME:="10"}
+HEROKU_APP_FOLDER=${HEROKU_APP_FOLDER:="$HOME/clone"}
+HEROKU_WAIT_TIME=${HEROKU_WAIT_TIME:="10"}
 
 echo "STARTING DEPLOYMENT"
 
@@ -34,8 +34,8 @@ trap 'error_message $LINENO' ERR
 set -o pipefail
 set -e
 
-echo "CHANGING Directory to $APPLICATION_FOLDER"
-cd $APPLICATION_FOLDER
+echo "CHANGING Directory to $HEROKU_APP_FOLDER"
+cd $HEROKU_APP_FOLDER
 
 #echo "CHECKING Access to Heroku application $HEROKU_APP_NAME"
 #codeship_heroku check_access $HEROKU_APP_NAME
@@ -64,12 +64,12 @@ echo "DEPLOYMENT: $deployment_id"
 output_stream_url=`echo "$deployment" | jq -r .output_stream_url`
 
 # Sleep to allow the output stream to become available
-sleep $AFTER_DEPLOYMENT_WAIT_TIME
+sleep $HEROKU_WAIT_TIME
 
 curl -sS "$output_stream_url"
 
 # Sleep to allow Heroku to store the result of the deployment
-sleep $AFTER_DEPLOYMENT_WAIT_TIME
+sleep $HEROKU_WAIT_TIME
 
 echo "CHECKING API for deployment success"
 
