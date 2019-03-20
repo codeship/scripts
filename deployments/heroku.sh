@@ -40,7 +40,7 @@ cd $HEROKU_APP_FOLDER
 #echo "CHECKING Access to Heroku application $HEROKU_APP_NAME"
 #codeship_heroku check_access $HEROKU_APP_NAME
 
-ARTIFACT_PATH=/tmp/deployable_artifact.tar.gz
+ARTIFACT_PATH=/tmp/deployable_artifact_$HEROKU_APP_NAME.tar.gz
 
 echo "PACKAGING tar.gz for deployment"
 tar -pczf $ARTIFACT_PATH ./
