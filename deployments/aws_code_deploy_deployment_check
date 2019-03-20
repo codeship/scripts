@@ -1,0 +1,67 @@
+#!/home/rof/.rvm/rubies/ruby-2.5.3/bin/ruby
+require 'json'
+require 'open3'
+
+module AWS
+  class CodeshipCodeDeployCheck
+    def initialize deployment_id_file
+      @deployment_id_file = deployment_id_file
+    end
+
+    def check_deployment
+      while true do
+        deployment = Deployment.new(@deployment_id_file)
+        p deployment and return false if deployment.could_not_fetch?
+
+        puts "Status is #{deployment.status}"
+        puts
+
+        case deployment.status
+          when 'Aborted' then return false
+          when 'Failed' then return false
+          when 'Succeeded' then return true
+      
+          else print "."; sleep 3
+        end
+      end
+    rescue Exception => e
+      puts e
+      return false
+    end
+
+    class Deployment
+      attr_reader :could_not_fetch
+
+      def initialize(deployment_id_file)
+        @deployment_id_file = deployment_id_file
+        stdout_str, stderr_str, status = Open3.capture3("codeship_aws deploy get-deployment --deployment-id #{id}")
+        @deployment_data = stdout_str
+        puts stderr_str if stderr_str != ""
+        @could_not_fetch = status != 0
+      end
+
+      def id
+        @id ||= JSON.parse(File.read(@deployment_id_file))['deploymentId']
+      end
+
+      def status
+        @status ||= JSON.parse(@deployment_data)['deploymentInfo']['status']
+      end
+
+      def could_not_fetch?
+        @could_not_fetch
+      end
+
+      def inspect
+        @deployment_data
+      end
+    end
+  end
+end
+
+if $0 == __FILE__
+  puts "Waiting for result of deployment"
+  result = AWS::CodeshipCodeDeployCheck.new(ARGV[0]).check_deployment
+  puts "\nDeployment #{result ? 'Successful' : 'Failed'}"
+  exit result
+end
