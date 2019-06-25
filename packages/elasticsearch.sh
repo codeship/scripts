@@ -23,7 +23,11 @@ ELASTICSEARCH_PLUGINS=${ELASTICSEARCH_PLUGINS:=""}
 # source $HOME/bin/jdk/jdk_switcher
 # jdk_switcher home oraclejdk8
 # jdk_switcher use oraclejdk8
-if [ ${ELASTICSEARCH_VERSION:0:1} -ge 5 ]
+if [ ${ELASTICSEARCH_VERSION:0:1} -ge 7 ]
+then
+  ELASTICSEARCH_DL_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}-linux-x86_64.tar.gz"
+  ELASTICSEARCH_PLUGIN_BIN="${ELASTICSEARCH_DIR}/bin/elasticsearch-plugin"
+elif [ ${ELASTICSEARCH_VERSION:0:1} -eq 5 ] || [ ${ELASTICSEARCH_VERSION:0:1} -eq 6 ]
 then
   ELASTICSEARCH_DL_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
   ELASTICSEARCH_PLUGIN_BIN="${ELASTICSEARCH_DIR}/bin/elasticsearch-plugin"
