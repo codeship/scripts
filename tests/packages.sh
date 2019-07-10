@@ -216,3 +216,10 @@ if [ ${PIPELINE_ID} -eq "3" ]; then
         bash packages/maven.sh
         mvn -v | grep "${MAVEN_VERSION}"
 fi
+
+# DynamoDB
+if [ ${PIPELINE_ID} -eq "1" ]; then
+	test_header "DynamoDB"
+	bash packages/dynamodb.sh
+	netstat -lnp | grep 8000
+fi
