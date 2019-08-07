@@ -9,7 +9,7 @@
 # (otherwise the default below will be used).
 # * FFMPEG_VERSION
 #
-FFMPEG_VERSION=${FFMPEG_VERSION:="4.0"}
+FFMPEG_VERSION=${FFMPEG_VERSION:="4.2"}
 FFMPEG_DIR=${FFMPEG_DIR:=$HOME/cache/ffmpeg-$FFMPEG_VERSION}
 
 set -e
