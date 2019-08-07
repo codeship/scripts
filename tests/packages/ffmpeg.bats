@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 setup() {
-  export FFMPEG_VERSION="4.0"
+  export FFMPEG_VERSION="4.2"
 }
 
 cleanup() {
