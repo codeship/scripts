@@ -13,7 +13,7 @@ if [ ! -d "${TDS_DIR}" ]; then
   CACHED_DOWNLOAD="${HOME}/cache/freetds.tar.gz"
 
   mkdir -p "${HOME}/freetds"
-  wget --continue --output-document "${CACHED_DOWNLOAD}" "ftp://ftp.freetds.org/pub/freetds/stable/freetds-patched.tar.gz"
+  wget --continue --output-document "${CACHED_DOWNLOAD}" "ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.1.17.tar.gz"
   tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${HOME}/freetds"
 
   (
