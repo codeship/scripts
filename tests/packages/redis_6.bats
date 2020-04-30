@@ -1,9 +1,9 @@
 #!/usr/bin/env bats
-DESCRIPTION_VERSION="3.2.13"
+DESCRIPTION_VERSION="6.0.0"
 load redis_functions
 
 setup() {
-  export REDIS_VERSION="3.2.13"
+  export REDIS_VERSION="6.0.0"
 }
 
 @test "[redis.sh $DESCRIPTION_VERSION] Script runs" {
