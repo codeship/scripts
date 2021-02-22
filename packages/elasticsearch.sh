@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 # Install a custom ElasticSearch version - https://www.elastic.co/products/elasticsearch
 #
 # To run this script in Codeship, add the following
@@ -17,6 +19,7 @@ ELASTICSEARCH_VERSION=${ELASTICSEARCH_VERSION:="1.5.2"}
 ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
 ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
 ELASTICSEARCH_PLUGINS=${ELASTICSEARCH_PLUGINS:=""}
+MAX_ATTEMPTS=10
 
 # The download location of version 5.x and above, and 2.x follows a different URL structure than 1.x.
 # Make sure to use Oracle JDK 8 for Elasticsearch 5.x and above - run the following commands in your setup steps:
@@ -39,12 +42,29 @@ else
   ELASTICSEARCH_DL_URL="https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
   ELASTICSEARCH_PLUGIN_BIN=""
 fi
-set -e
 
 CACHED_DOWNLOAD="${HOME}/cache/elasticsearch-${ELASTICSEARCH_VERSION}.tar.gz"
 
 mkdir -p "${ELASTICSEARCH_DIR}"
-wget --continue --output-document "${CACHED_DOWNLOAD}" "${ELASTICSEARCH_DL_URL}"
+
+ATTEMPT_NO=1
+while true; do
+    echo "Making attempt #" $ATTEMPT_NO
+    set +e
+    wget --continue --output-document "${CACHED_DOWNLOAD}" "${ELASTICSEARCH_DL_URL}"
+    if [ $? -eq 0 ]; then
+        # no any error from wget, break the loop
+        break
+    fi
+    set -e
+    if [ $ATTEMPT_NO -ge $MAX_ATTEMPTS ]; then
+        echo "Giving up downloading $ELASTICSEARCH_DL_URL after $ATTEMPT_NO attempts"
+        exit 404
+    fi
+    sleep 1
+    ATTEMPT_NO=$(expr $ATTEMPT_NO + 1)
+done
+
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${ELASTICSEARCH_DIR}"
 
 echo "http.port: ${ELASTICSEARCH_PORT}" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
