@@ -9,12 +9,12 @@
 # (otherwise the default below will be used).
 # * TIGERVNC_VERSION
 #
-TIGERVNC_VERSION=${TIGERVNC_VERSION:="1.8.0"}
+TIGERVNC_VERSION=${TIGERVNC_VERSION:="1.11.0"}
 
 set -e
 
 mkdir -p "${HOME}/tigervnc"
-wget -O "tigervnc-${TIGERVNC_VERSION}.x86_64.tar.gz" "https://bintray.com/tigervnc/stable/download_file?file_path=tigervnc-${TIGERVNC_VERSION}.x86_64.tar.gz"
+wget -O "tigervnc-${TIGERVNC_VERSION}.x86_64.tar.gz" "https://versaweb.dl.sourceforge.net/project/tigervnc/stable/${TIGERVNC_VERSION}/tigervnc-${TIGERVNC_VERSION}.x86_64.tar.gz"
 tar -xaf "tigervnc-${TIGERVNC_VERSION}.x86_64.tar.gz" --strip-components=1 --directory "${HOME}/tigervnc"
 
 ln -s "${HOME}/tigervnc/usr/bin/"* "${HOME}/bin"
