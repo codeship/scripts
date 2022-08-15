@@ -7,3 +7,7 @@ setup() {
 @test "[hugo.sh] Script runs" {
   ./packages/hugo.sh
 }
+
+@test "[hugo.sh] Verify installed version" {
+  hugo version
+}
