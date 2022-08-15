@@ -8,6 +8,10 @@ setup() {
   ./packages/hugo.sh
 }
 
+@test "[hugo.sh] Download cached" {
+  [ -f "${HOME}/cache/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz" ]
+}
+
 @test "[hugo.sh] Verify installed version" {
   hugo version
 }
