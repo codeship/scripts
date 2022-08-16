@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 setup() {
-  export HUGO_VERSION="0.81.0"
+  export HUGO_VERSION="0.101.0"
 }
 
 @test "[hugo.sh] Script runs" {
@@ -13,5 +13,6 @@ setup() {
 }
 
 @test "[hugo.sh] Verify installed version" {
-  hugo version
+  run hugo version
+  [[ "$output" =~ "hugo v${HUGO_VERSION}" ]]
 }

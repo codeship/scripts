@@ -3,7 +3,7 @@
 #
 # You can either add this here, or configure them on the environment tab of your
 # project settings.
-HUGO_VERSION="0.81.0"
+HUGO_VERSION="0.101.0"
 HUGO_DIR=${HUGO_DIR:="$HOME/hugo"}
 set -e
 CACHED_DOWNLOAD="${HOME}/cache/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
