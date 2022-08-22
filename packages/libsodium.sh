@@ -9,7 +9,7 @@
 # (otherwise the default below will be used).
 # * LIBSODIUM_VERSION
 #
-LIBSODIUM_VERSION=${LIBSODIUM_VERSION:="1.0.16"}
+LIBSODIUM_VERSION=${LIBSODIUM_VERSION:="1.0.18"}
 LIBSODIUM_DIR=${LIBSODIUM_DIR:=$HOME/cache/libsodium}
 
 set -e
