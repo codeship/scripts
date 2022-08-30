@@ -4,15 +4,15 @@ setup() {
   export AWSCLIV2_VERSION="latest"
 }
 
-@test "[awscli.sh] Script runs" {
+@test "[awscliv2.sh] Script runs" {
   ./packages/awscliv2.sh
 }
 
-@test "[awscli.sh] Download cached" {
+@test "[awscliv2.sh] Download cached" {
   [ -f "${HOME}/cache/awscli-exe-linux-x86_64.zip" ]
 }
 
-@test "[awscli.sh] Verify version 2.x installed" {
+@test "[awscliv2.sh] Verify version 2.x installed" {
   run aws --version
   [[ "$output" =~ "aws-cli/2" ]]
 }
