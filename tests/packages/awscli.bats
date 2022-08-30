@@ -9,7 +9,7 @@ setup() {
 }
 
 @test "[awscli.sh] Download cached" {
-  [ -f "${HOME}/cache/awscli-exe-linux-x86_64" ] # use regex to finsh the path for cached download
+  [ -f "${HOME}/cache/awscli-exe-linux-x86_64.zip" ]
 }
 
 @test "[awscli.sh] Verify version 2.x installed" {
