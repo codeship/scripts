@@ -7,7 +7,7 @@
 #
 # Include in your builds via
 # \curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/firefox.sh | bash -s
-FIREFOX_VERSION=${FIREFOX_VERSION:="106.0"}
+FIREFOX_VERSION=${FIREFOX_VERSION:="28.0"}
 FIREFOX_DIR=${FIREFOX_DIR:="$HOME/firefox"}
 
 # fail the script on the first failing command.
