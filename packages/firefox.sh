@@ -16,5 +16,5 @@ CACHED_DOWNLOAD="${HOME}/cache/firefox-${FIREFOX_VERSION}.tar.bz2"
 
 rm -rf "${FIREFOX_DIR}"
 mkdir -p ${FIREFOX_DIR}
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${FIREFOX_VERSION}/linux-x86_64/en-US/firefox-${FIREFOX_VERSION}.tar.bz2"
+wget --continue --output-document "${CACHED_DOWNLOAD}" "https://ftp.mozilla.org/pub/firefox/releases/${FIREFOX_VERSION}/linux-x86_64/en-US/firefox-${FIREFOX_VERSION}.tar.bz2"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${FIREFOX_DIR}"
