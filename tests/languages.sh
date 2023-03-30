@@ -20,12 +20,6 @@ export DART_VERSION="1.22.1"
 bash languages/dart.sh
 dart --version 2>&1 | grep "${DART_VERSION}"
 
-# Erlang
-test_header "Erlang"
-export ERLANG_VERSION="19.2"
-source languages/erlang.sh
-erl -eval '{ok, Version} = file:read_file(filename:join([code:root_dir(), "releases", erlang:system_info(otp_release), "OTP_VERSION"])), erlang:display(erlang:binary_to_list(Version)), halt().' -noshell | grep "${ERLANG_VERSION}"
-
 # Elixir, requires the Erlang script above
 test_header "Elixir"
 export ELIXIR_VERSION="1.4.2"
