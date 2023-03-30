@@ -28,7 +28,7 @@ elixir --version | grep "${ELIXIR_VERSION}"
 
 # Go
 test_header "Go"
-export GO_VERSION="1.8"
+export GO_VERSION="1.20"
 source languages/go.sh
 go version | grep "${GO_VERSION}"
 
