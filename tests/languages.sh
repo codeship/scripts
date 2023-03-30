@@ -22,7 +22,7 @@ dart --version 2>&1 | grep "${DART_VERSION}"
 
 # Elixir, requires the Erlang script above
 test_header "Elixir"
-export ELIXIR_VERSION="1.4.2"
+export ELIXIR_VERSION="1.12.3"
 source languages/elixir.sh
 elixir --version | grep "${ELIXIR_VERSION}"
 
