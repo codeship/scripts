@@ -21,11 +21,10 @@ CACHED_DOWNLOAD="${HOME}/cache/mongodb-linux-x86_64-${MONGODB_VERSION}.tgz"
 
 mkdir -p "${MONGODB_DIR}"
 
-if [ ${UBUNTU_VERSION:0:2} -eq 18 ] && [ ${MONGODB_VERSION:0:1} -ge 4 ]
-then
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1804-${MONGODB_VERSION}.tgz"
+if [ ${UBUNTU_VERSION:0:2} -ge 18 ] && [ ${MONGODB_VERSION:0:1} -ge 4 ]; then
+  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu${UBUNTU_VERSION:0:2}04-${MONGODB_VERSION}.tgz"
 else
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-${MONGODB_VERSION}.tgz"
+  wget --continue --output-document "${CACHED_DOWNLOAD}" "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-${MONGODB_VERSION}.tgz"
 fi
 
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${MONGODB_DIR}"
