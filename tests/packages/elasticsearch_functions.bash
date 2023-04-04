@@ -1,7 +1,7 @@
 configure_java() {
   source "${HOME}/bin/jdk/jdk_switcher"
-  jdk_switcher home oraclejdk8
-  jdk_switcher use oraclejdk8
+  jdk_switcher home openjdk8
+  jdk_switcher use openjdk8
 }
 
 cleanup() {
