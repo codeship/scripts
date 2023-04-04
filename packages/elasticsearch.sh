@@ -49,6 +49,11 @@ tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${ELASTICSEARCH_
 
 echo "http.port: ${ELASTICSEARCH_PORT}" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
 
+# Disable version 8 default security
+if [ ${ELASTICSEARCH_VERSION:0:1} -ge 8 ]; then
+  echo "xpack.security.enabled: false" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
+fi
+
 if [ "$ELASTICSEARCH_PLUGINS" ]
 then
   for i in $ELASTICSEARCH_PLUGINS ; do
