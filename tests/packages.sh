@@ -87,41 +87,11 @@ if [ ${PIPELINE_ID} -eq "2" ]; then
 	identify -version | grep "${IMAGEMAGICK_VERSION}"
 fi
 
-# MongoDB
-if [ ${PIPELINE_ID} -eq "3" ]; then
-	test_header "MongoDB 3.4"
-	export MONGODB_PORT="27018"
-	export MONGODB_VERSION="3.4.24"
-	bash packages/mongodb.sh
-	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
-	kill "$(cat ${HOME}/mongodb/mongod.lock)"
-	sleep 5
-	rm -rf "${HOME}/mongodb/"
-
-	export MONGODB_PORT="27018"
-	export MONGODB_VERSION="3.4.24"
-	export MONGODB_STORAGE_ENGINE="mmapv1"
-	bash packages/mongodb.sh
-	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
-	kill "$(cat ${HOME}/mongodb/mongod.lock)"
-	sleep 5
-	rm -rf "${HOME}/mongodb/"
-
-	test_header "MongoDB 3.6"
-	export MONGODB_PORT="27018"
-	export MONGODB_VERSION="3.6.23"
-	bash packages/mongodb.sh
-	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
-	kill "$(cat ${HOME}/mongodb/mongod.lock)"
-	sleep 5
-	rm -rf "${HOME}/mongodb/"
-fi
-
 # MongoDB version 4
 if [ ${PIPELINE_ID} -eq "1" ]; then
 	test_header "MongoDB 4.4"
 	export MONGODB_PORT="27018"
-	export MONGODB_VERSION="4.4.15"
+	export MONGODB_VERSION="4.4.19"
 	bash packages/mongodb.sh
 	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
 	kill "$(cat ${HOME}/mongodb/mongod.lock)"
@@ -133,12 +103,24 @@ fi
 if [ ${PIPELINE_ID} -eq "2" ]; then
 	test_header "MongoDB 5.0"
 	export MONGODB_PORT="27018"
-	export MONGODB_VERSION="5.0.9"
+	export MONGODB_VERSION="5.0.15"
 	bash packages/mongodb.sh
 	netstat -lnp | grep "${MONGODB_PORT}.*mongod"
 	kill "$(cat ${HOME}/mongodb/mongod.lock)"
 	sleep 5
 	rm -rf "${HOME}/mongodb/"
+fi
+
+# MongoDB version 6
+if [ ${PIPELINE_ID} -eq "3" ]; then
+        test_header "MongoDB 6.0"
+        export MONGODB_PORT="27018"
+        export MONGODB_VERSION="6.0.5"
+        bash packages/mongodb.sh
+        netstat -lnp | grep "${MONGODB_PORT}.*mongod"
+        kill "$(cat ${HOME}/mongodb/mongod.lock)"
+        sleep 5
+        rm -rf "${HOME}/mongodb/"
 fi
 
 # MySQL 5.7
