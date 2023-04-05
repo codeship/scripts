@@ -19,10 +19,10 @@ ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
 ELASTICSEARCH_PLUGINS=${ELASTICSEARCH_PLUGINS:=""}
 
 # The download location of version 5.x and above, and 2.x follows a different URL structure than 1.x.
-# Make sure to use Oracle JDK 8 for Elasticsearch 5.x and above - run the following commands in your setup steps:
+# Make sure to use OpenJDK 8 for Elasticsearch 5.x and above - run the following commands in your setup steps:
 # source $HOME/bin/jdk/jdk_switcher
-# jdk_switcher home oraclejdk8
-# jdk_switcher use oraclejdk8
+# jdk_switcher home openjdk8
+# jdk_switcher use openjdk8
 if [ ${ELASTICSEARCH_VERSION:0:1} -ge 7 ]
 then
   ELASTICSEARCH_DL_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}-linux-x86_64.tar.gz"
@@ -48,6 +48,11 @@ wget --continue --output-document "${CACHED_DOWNLOAD}" "${ELASTICSEARCH_DL_URL}"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${ELASTICSEARCH_DIR}"
 
 echo "http.port: ${ELASTICSEARCH_PORT}" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
+
+# Disable version 8 default security
+if [ ${ELASTICSEARCH_VERSION:0:1} -ge 8 ]; then
+  echo "xpack.security.enabled: false" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
+fi
 
 if [ "$ELASTICSEARCH_PLUGINS" ]
 then

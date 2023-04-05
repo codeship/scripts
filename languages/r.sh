@@ -18,7 +18,7 @@ tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${R_PATH}"
 
 (
   cd "${R_PATH}" || exit 1
-  ./configure
+  ./configure --without-recommended-packages
   make
 )
 

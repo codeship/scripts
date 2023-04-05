@@ -1,9 +1,9 @@
 #!/usr/bin/env bats
-DESCRIPTION_VERSION="7.17.9"
+DESCRIPTION_VERSION="8.7.0"
 load elasticsearch_functions
 
 setup() {
-  export ELASTICSEARCH_VERSION="7.17.9"
+  export ELASTICSEARCH_VERSION="8.7.0"
   export ELASTICSEARCH_PORT="9333"
 }
 
