@@ -209,7 +209,7 @@ fi
 # Maven
 if [ ${PIPELINE_ID} -eq "3" ]; then
         test_header "Maven"
-        export MAVEN_VERSION="3.6.3"
+        export MAVEN_VERSION="3.9.3"
         bash packages/maven.sh
         mvn -v | grep "${MAVEN_VERSION}"
 fi
