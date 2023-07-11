@@ -1,12 +1,12 @@
 # [Codeship Scripts](https://github.com/codeship/scripts/) [ ![Codeship Status for codeship/scripts](https://codeship.com/projects/7ffee8d0-c443-0132-17cf-0a3d9756066d/status?branch=master)](https://codeship.com/projects/74080)
 
-A public collection of useful scripts for use on [Codeship](https://codeship.com/) and similar tools.
+A public collection of useful scripts for use on [Codeship](https://app.codeship.com/) and similar tools.
 
-E.g. scripts to install specific versions of software not included by default on the build VMs. Deployment scripts for external services to customize to your needs, configure caching or trigger notifications. And other scripts if you want to have them included ;)
+E.g. scripts to install specific versions of software not included by default on the build VMs. Deployment scripts for external services to customize to your needs, configure caching or trigger notifications. And other scripts if you want to have them included. ;)
 
 ## Using the scripts
 
-Each script includes a comment at the beginning detailing how to configure and use the script in your builds. Those comments look for example like
+Each script includes a comment at the beginning detailing how to configure and use the script in your builds. Those comments, for example, look like:
 
 ```shell
 # Add at least the following environment variables to your project configuration
@@ -21,9 +21,9 @@ Each script includes a comment at the beginning detailing how to configure and u
 
 Most scripts include `set -e` to make the script fail as soon as a subcommand returns a non-zero exit code (which indicates failure).
 
-This is fine if you call the script as documented above (via the `curl` command). But it will have side effects if you copy the commands into your settings on [codeship.com](https://codeship.com) as any command that fails after the `set -e`) will terminate your build. You'll get a `SYSTEM` build status, but no further error message or log output. You probably don't want this :)
+This is fine if you call the script as documented above (via the `curl` command). But it will have side effects if you copy the commands into your project settings on Codeship as any command that fails after the `set -e` will terminate your build. You'll get a `SYSTEM` build status, but no further error message or log output. You probably don't want this. :)
 
-Please see the post at https://documentation.codeship.com/basic/builds-and-configuration/scripts/#set--e for more information on how `set -e` works and why this causes issues if you include it in your setup or test commands.
+Please see the post at https://docs.cloudbees.com/docs/cloudbees-codeship/latest/basic-builds-and-configuration/scripts#_set_e for more information on how `set -e` works and why this causes issues if you include it in your setup or test commands.
 
 ## Code of Conduct
 
