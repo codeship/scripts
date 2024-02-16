@@ -9,7 +9,7 @@
 # (otherwise the default below will be used).
 # * MAVEN_VERSION
 #
-MAVEN_VERSION=${MAVEN_VERSION:="3.9.3"}
+MAVEN_VERSION=${MAVEN_VERSION:="3.9.6"}
 MAVEN_DIR=${MAVEN_DIR:=$HOME/cache/maven-$MAVEN_VERSION}
 
 set -e
