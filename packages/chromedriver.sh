@@ -16,7 +16,7 @@ CACHED_DOWNLOAD="${HOME}/cache/chromedriver-linux64-${CHROMEDRIVER_VERSION}.zip"
 rm -rf "${HOME}/bin/chromedriver"
 rm -rf "${HOME}/bin/chromedriver-linux64"
 
-wget --continue --output-document "${CACHED_DOWNLOAD}" "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
+wget --continue --output-document "${CACHED_DOWNLOAD}" "https://storage.googleapis.com/chrome-for-testing-public/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip"
 unzip -o "${CACHED_DOWNLOAD}" -d "${HOME}/bin"
 ln -s "${HOME}/bin/chromedriver-linux64/chromedriver" "${HOME}/bin/chromedriver"
 
