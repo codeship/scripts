@@ -7,6 +7,10 @@
 set -e
 CACHED_BINARY="${HOME}/cache/shellcheck"
 
+if [ ! -x "$(command -v cabal)" ]; then
+  sudo apt-get update && sudo apt-get install -y cabal-install
+fi
+
 if [ ! -f "${CACHED_BINARY}" ]; then
   cabal update
   cabal install ShellCheck --reinstall --force-reinstall
