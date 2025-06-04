@@ -13,7 +13,7 @@ fi
 
 if [ ! -f "${CACHED_BINARY}" ]; then
   cabal update
-  cabal install ShellCheck --reinstall --force-reinstall
+  cabal install ShellCheck --reinstall --force-reinstalls
   mv "${HOME}/.cabal/bin/shellcheck" "${CACHED_BINARY}"
 fi
 
